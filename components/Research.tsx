@@ -91,7 +91,7 @@ function HighlightedAuthors({
   const parts = authors.split(highlighted);
 
   return (
-    <span className="text-sm text-slate-500">
+    <span className="text-base text-slate-500">
       {parts.map((part, index) => (
         <span key={index}>
           {part}
@@ -107,14 +107,10 @@ function HighlightedAuthors({
 export default function Research() {
   return (
     <section id="research" className="py-20">
-      <p className="text-sm">
-        <span className="text-slate-500">$</span>{" "}
-        <span className="text-cyan-400">ls</span>{" "}
-        <span className="text-blue-400">~/research/</span>
-      </p>
+      <h3 className="mb-6 text-2xl font-semibold text-slate-200">Research</h3>
 
       {/* Publications */}
-      <h3 className="mt-8 mb-6 text-lg font-semibold text-slate-200">
+      <h3 className="mt-6 mb-6 text-xl font-semibold text-slate-200">
         Publications
       </h3>
 
@@ -125,20 +121,20 @@ export default function Research() {
               authors={pub.authors}
               highlighted={pub.highlighted}
             />
-            <span className="text-sm text-slate-500"> ({pub.year}). </span>
-            <span className="text-sm text-slate-300">
+            <span className="text-base text-slate-500"> ({pub.year}). </span>
+            <span className="text-base text-slate-300">
               &ldquo;{pub.title}.&rdquo;
             </span>{" "}
-            <span className="text-sm italic text-slate-500">
+            <span className="text-base italic text-slate-500">
               {pub.journal}.
             </span>
-            <span className="text-sm text-slate-500"> (KCI)</span>
+            <span className="text-base text-slate-500"> (KCI)</span>
           </div>
         ))}
       </div>
 
       {/* Working Papers */}
-      <h3 className="mt-12 mb-6 text-lg font-semibold text-slate-200">
+      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-200">
         Working Papers
       </h3>
 
@@ -146,19 +142,19 @@ export default function Research() {
         {WORKING_PAPERS.map((paper) => (
           <article
             key={paper.title}
-            className="border-b border-slate-800 py-6 first:pt-0 last:border-b-0"
+            className="border-b border-slate-800 py-6 first:pt-0 last:border-b-0 transition-all duration-300 hover:bg-cyan-400/[0.03]"
           >
             <h4 className="font-semibold text-slate-200">{paper.title}</h4>
             {paper.coauthors && (
-              <p className="mt-1 text-sm italic text-slate-500">
+              <p className="mt-1 text-base italic text-slate-500">
                 {paper.coauthors}
               </p>
             )}
-            <p className="mt-1 text-sm text-slate-500">{paper.status}</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-200">
+            <p className="mt-1 text-base text-slate-500">{paper.status}</p>
+            <p className="mt-2 text-base leading-relaxed text-slate-200">
               {paper.description}
             </p>
-            <p className="mt-2 text-xs text-slate-600">
+            <p className="mt-2 text-sm text-slate-600">
               {paper.tags.join(" \u00B7 ")}
             </p>
           </article>
@@ -166,13 +162,13 @@ export default function Research() {
       </div>
 
       {/* Works in Progress */}
-      <h3 className="mt-12 mb-6 text-lg font-semibold text-slate-200">
+      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-200">
         Works in Progress
       </h3>
 
       <ul className="space-y-3">
         {WORKS_IN_PROGRESS.map((item) => (
-          <li key={item.title} className="text-sm">
+          <li key={item.title} className="text-base rounded-md px-3 py-2 -mx-3 transition-all duration-300 hover:bg-cyan-400/[0.03]">
             <span className="text-slate-200">{item.title}</span>
             {item.coauthors && (
               <span className="italic text-slate-500">

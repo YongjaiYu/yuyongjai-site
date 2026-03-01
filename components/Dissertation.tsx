@@ -25,17 +25,13 @@ const PAPERS = [
 export default function Dissertation() {
   return (
     <section id="dissertation" className="py-20">
-      <p className="text-sm">
-        <span className="text-slate-500">$</span>{" "}
-        <span className="text-cyan-400">cat</span>{" "}
-        <span className="text-violet-400">dissertation.md</span>
-      </p>
+      <h3 className="mb-6 text-2xl font-semibold text-slate-200">Dissertation</h3>
 
-      <h3 className="mt-6 text-lg font-semibold text-slate-100">
+      <h4 className="text-lg font-semibold text-slate-100">
         The Ideological Content of Presidential Unilateral Action
-      </h3>
+      </h4>
 
-      <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-200">
+      <p className="mt-3 max-w-xl text-base leading-relaxed text-slate-200">
         A three-paper dissertation developing a unified, content-focused theory
         of presidential unilateral action. Presidents strategically calibrate the
         ideological character, magnitude, and electoral targeting of directives
@@ -47,14 +43,14 @@ export default function Dissertation() {
         {PAPERS.map((paper) => (
           <div
             key={paper.number}
-            className="border-l-2 border-slate-700 pl-4 transition-colors hover:border-cyan-400/50"
+            className="border-l-2 border-slate-700 pl-4 transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/[0.03]"
           >
-            <p className="text-xs text-slate-500">Paper {paper.number}</p>
+            <p className="text-sm text-slate-500">Paper {paper.number}</p>
             <h4 className="mt-1 font-semibold text-slate-200">
               {paper.title}
             </h4>
-            <p className="text-sm text-cyan-400/70">{paper.subtitle}</p>
-            <p className="mt-1 text-sm text-slate-400">{paper.description}</p>
+            <p className="text-base text-cyan-400/70">{paper.subtitle}</p>
+            <p className="mt-1 text-base text-slate-400">{paper.description}</p>
           </div>
         ))}
       </div>

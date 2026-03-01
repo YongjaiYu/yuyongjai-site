@@ -50,23 +50,19 @@ export default function Teaching() {
 
   return (
     <section id="teaching" className="py-20">
-      <p className="text-sm">
-        <span className="text-slate-500">$</span>{" "}
-        <span className="text-cyan-400">tail -f</span>{" "}
-        <span className="text-yellow-400">teaching.log</span>
-      </p>
+      <h3 className="mb-6 text-2xl font-semibold text-slate-200">Teaching</h3>
 
-      <p className="mt-6 text-sm text-slate-200">
+      <p className="text-base text-slate-200">
         Teaching Assistant &mdash; UC Riverside (2023 &ndash; Present)
       </p>
 
       {/* Graduate Courses */}
-      <h3 className="mt-8 mb-4 text-xs font-medium uppercase tracking-widest text-slate-500">
+      <h3 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
         Graduate
       </h3>
       <ul className="space-y-2">
         {graduateCourses.map((course) => (
-          <li key={course.code} className="text-sm">
+          <li key={course.code} className="text-base">
             <span className="font-mono text-cyan-400">{course.code}</span>
             <span className="text-slate-200"> {course.name}</span>
           </li>
@@ -74,12 +70,12 @@ export default function Teaching() {
       </ul>
 
       {/* Undergraduate Courses */}
-      <h3 className="mt-8 mb-4 text-xs font-medium uppercase tracking-widest text-slate-500">
+      <h3 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
         Undergraduate
       </h3>
       <ul className="space-y-2">
         {undergraduateCourses.map((course) => (
-          <li key={course.code} className="text-sm">
+          <li key={course.code} className="text-base">
             <span className="font-mono text-cyan-400">{course.code}</span>
             <span className="text-slate-200"> {course.name}</span>
           </li>
