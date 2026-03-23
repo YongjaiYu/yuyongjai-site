@@ -49,7 +49,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
     title: "Collaborative Pedagogy at Minority-Serving Institutions",
     coauthors:
       "with Karina Alpayeva, Emmanoel Ferreira, Sarah Siddique, and Kim Yi Dionne",
-    status: "Work in progress",
     description:
       "Active learning strategies in large enrollment courses. Examines collaborative teaching approaches that improve student outcomes at minority-serving institutions.",
     tags: ["Pedagogy", "Higher Education", "Active Learning"],
@@ -57,10 +56,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
 ];
 
 const WORKS_IN_PROGRESS: WorkInProgress[] = [
-{
-    title: "Economic Conditions and Presidential Agenda-Setting",
-    coauthors: "with Jon Rogowski and Alex Evert",
-  },
   {
     title: "Korean National Assembly YouTube Communication",
     coauthors: "with Kyusik Yang",
@@ -73,6 +68,10 @@ const WORKS_IN_PROGRESS: WorkInProgress[] = [
   {
     title:
       "Strategic Issue Blending in Congressional Floor Speeches: Topic Mixtures and Cross-Party Vote Mobilization",
+  },
+  {
+    title: "Economic Conditions and Presidential Agenda-Setting",
+    coauthors: "with Jon Rogowski and Alex Evert",
   },
 ];
 
