@@ -1,7 +1,7 @@
 interface WorkingPaper {
   title: string;
   coauthors?: string;
-  status: string;
+  status?: string;
   description: string;
   tags: string[];
 }
@@ -25,7 +25,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
     title:
       "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
     coauthors: "with Eunseong Oh",
-    status: "Working paper",
     description:
       "Principled guidance for choosing among text representation models. Provide the concept of word separability.",
     tags: ["Text Analysis", "NLP", "Model Selection"],
@@ -33,7 +32,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
   {
     title:
       "When Conspiracy Belief Mobilizes Donors: Campaign Contributions in American Politics",
-    status: "Work in progress",
     description:
       "Politicians may spread conspiracy theories to raise funds from extremists. Uses 2012 and 2016 ANES data. Finding: Among Republicans, conspiracy theory believers contribute more to candidates.",
     tags: ["Campaign Finance", "Conspiracy Theories", "ANES"],
@@ -59,11 +57,7 @@ const WORKING_PAPERS: WorkingPaper[] = [
 ];
 
 const WORKS_IN_PROGRESS: WorkInProgress[] = [
-  {
-    title: "Public Interest Representation in Unilateral Actions",
-    status: "Early stage.",
-  },
-  {
+{
     title: "Economic Conditions and Presidential Agenda-Setting",
     coauthors: "with Jon Rogowski and Alex Evert",
   },
@@ -71,6 +65,14 @@ const WORKS_IN_PROGRESS: WorkInProgress[] = [
     title: "Korean National Assembly YouTube Communication",
     coauthors: "with Kyusik Yang",
     status: "Multimodal analysis.",
+  },
+  {
+    title:
+      "Measuring Regulatory Change Through Delegated Legislation: Evidence from Korean Presidential Decrees",
+  },
+  {
+    title:
+      "Strategic Issue Blending in Congressional Floor Speeches: Topic Mixtures and Cross-Party Vote Mobilization",
   },
 ];
 
@@ -155,7 +157,9 @@ export default function Research() {
                 {paper.coauthors}
               </p>
             )}
-            <p className="mt-1 text-base text-slate-500">{paper.status}</p>
+            {paper.status && (
+              <p className="mt-1 text-base text-slate-500">{paper.status}</p>
+            )}
             <p className="mt-2 text-base leading-relaxed text-slate-200">
               {paper.description}
             </p>
