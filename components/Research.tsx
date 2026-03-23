@@ -22,7 +22,17 @@ interface Publication {
 
 const WORKING_PAPERS: WorkingPaper[] = [
   {
-    title: "Campaign Contributions and Conspiracy Theory Propagation",
+    title:
+      "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
+    coauthors: "with Eunseong Oh",
+    status: "Working paper",
+    description:
+      "Principled guidance for choosing among text representation models. Provide the concept of word separability.",
+    tags: ["Text Analysis", "NLP", "Model Selection"],
+  },
+  {
+    title:
+      "When Conspiracy Belief Mobilizes Donors: Campaign Contributions in American Politics",
     status: "Work in progress",
     description:
       "Politicians may spread conspiracy theories to raise funds from extremists. Uses 2012 and 2016 ANES data. Finding: Among Republicans, conspiracy theory believers contribute more to candidates.",
@@ -52,11 +62,6 @@ const WORKS_IN_PROGRESS: WorkInProgress[] = [
   {
     title: "Public Interest Representation in Unilateral Actions",
     status: "Early stage.",
-  },
-  {
-    title: "Domain-Specific Language Models for Legislative Texts",
-    coauthors: "with Eunseong Oh",
-    status: "Presented at PolMeth 2025.",
   },
   {
     title: "Economic Conditions and Presidential Agenda-Setting",
