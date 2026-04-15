@@ -74,19 +74,27 @@ export default function Sidebar() {
 
         {/* Tagline */}
         <p className="mb-6 text-lg leading-relaxed text-slate-400">
-          Ph.D. Student in Political Science at UC Riverside.
+          I study what policy presidents pursue with unilateral actions
+          under institutional constraint, and I develop computational
+          methods to measure policy content at scale.
         </p>
 
         {/* Research Tree */}
         <div className="mb-8 text-sm leading-relaxed text-slate-600">
           <p>├── <span className="text-emerald-400">presidential-power/</span></p>
           <p>│   ├── <span className="text-blue-400">unilateral-actions/</span></p>
-          <p>│   └── <span className="text-blue-400">continuous-cost-constraint/</span></p>
+          <p>│   ├── <span className="text-blue-400">cost-constrained-model/</span></p>
+          <p>│   └── <span className="text-blue-400">presidential-representation/</span></p>
           <p>├── <span className="text-emerald-400">computational-methods/</span></p>
+          <p>│   ├── <span className="text-blue-400">anchored-embedding-scaling/</span></p>
           <p>│   ├── <span className="text-blue-400">llm-classification/</span></p>
-          <p>│   ├── <span className="text-blue-400">aes/</span></p>
-          <p>│   └── <span className="text-blue-400">multimodal-analysis/</span></p>
+          <p>│   ├── <span className="text-blue-400">agent-based-model/</span></p>
+          <p>│   ├── <span className="text-blue-400">multimodal-analysis/</span></p>
+          <p>│   └── <span className="text-blue-400">text-analysis/</span></p>
+          <p>├── <span className="text-emerald-400">digital-twins/</span></p>
+          <p>│   └── <span className="text-blue-400">digital-twins-confounder/</span></p>
           <p>└── <span className="text-emerald-400">political-communication/</span></p>
+          <p>{'\u00A0\u00A0\u00A0\u00A0'}├── <span className="text-blue-400">conspiracy-theory/</span></p>
           <p>{'\u00A0\u00A0\u00A0\u00A0'}└── <span className="text-blue-400">pol.me/</span></p>
         </div>
 

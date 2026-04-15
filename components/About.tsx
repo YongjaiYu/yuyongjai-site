@@ -33,17 +33,20 @@ export default function About() {
       <h3 className="mb-6 text-2xl font-semibold text-slate-200">About</h3>
 
       <p className="max-w-xl text-base leading-relaxed text-slate-200">
-        My research interests span American political institutions, the
-        separation of powers, and political polarization. Methodologically, I
-        apply computational tools&mdash;large language models, text analysis,
-        and multimodal deep learning&mdash;to questions about how political
-        actors communicate, legislate, and exercise power.
+        I study presidential power in the separation of powers system. My
+        research asks what policy presidents pursue through unilateral
+        actions, and how they calibrate the policy content of those actions
+        under institutional constraint. To study this, I develop an anchored
+        embedding scaling method to measure policy displacement of unilateral
+        actions.
       </p>
 
       <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-200">
-        I am also interested in how polarization shapes political participation
-        on digital platforms, and in particular, how online communication
-        between elected officials and their constituents can be improved.
+        Substantively, I work on American political institutions, executive
+        politics, legislative politics, and political communication.
+        Methodologically, I use large-scale text analysis, large language
+        models, and other computational tools to build new measures from
+        political texts.
       </p>
 
       {/* Research Interests */}
