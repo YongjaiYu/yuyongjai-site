@@ -50,7 +50,7 @@ export default function Teaching() {
 
   return (
     <section id="teaching" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Teaching</h3>
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Teaching</h2>
 
       <p className="font-sans text-base text-slate-300">
         Teaching Assistant &mdash; UC Riverside (2023 &ndash; Present)

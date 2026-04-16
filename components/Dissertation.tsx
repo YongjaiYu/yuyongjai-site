@@ -25,7 +25,7 @@ const CHAPTERS = [
 export default function Dissertation() {
   return (
     <section id="dissertation" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Dissertation</h3>
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Dissertation</h2>
 
       <h4 className="text-lg font-semibold text-slate-100">
         Strategic Unilateralism and Presidential Policy Choice

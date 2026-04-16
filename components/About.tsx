@@ -26,7 +26,7 @@ const EDUCATION = [
 export default function About() {
   return (
     <section id="about" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-100">About</h3>
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">About</h2>
 
       <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
         I study presidential power in the separation of powers system. My

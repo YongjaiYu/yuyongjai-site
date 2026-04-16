@@ -1,7 +1,7 @@
 export default function Software() {
   return (
     <section id="software" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Software</h3>
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Software</h2>
 
       <div>
         <a

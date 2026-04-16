@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-slate-800 py-8">
-      <h3 className="mb-4 text-2xl font-semibold text-slate-100">Contact</h3>
+      <h2 className="mb-4 text-2xl font-semibold text-slate-100">Contact</h2>
       <div className="mb-6 space-y-2 text-sm">
         <p>
           <a

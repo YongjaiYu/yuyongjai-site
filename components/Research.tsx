@@ -109,7 +109,7 @@ function HighlightedAuthors({
 export default function Research() {
   return (
     <section id="research" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Research</h3>
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Research</h2>
 
       <p className="mb-8 max-w-xl text-base font-sans leading-relaxed text-slate-300">
         My research brings together political institutions, political
