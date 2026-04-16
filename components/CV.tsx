@@ -1,6 +1,6 @@
 export default function CV() {
   return (
-    <section id="cv" className="py-20">
+    <section id="cv" className="py-12">
       <h3 className="mb-6 text-2xl font-semibold text-slate-100">CV</h3>
 
       <a
