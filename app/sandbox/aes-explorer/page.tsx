@@ -85,6 +85,10 @@ export default function AESExplorerPage() {
             <p className="mt-1">
               Score range: liberal (&minus;2) to conservative (+2). FDR&ndash;present, N&nbsp;=&nbsp;20,961.
             </p>
+            <p className="mt-1">
+              Ideological positions are anchored using bill-level ideal points
+              from Crosson et al. (2025).
+            </p>
           </footer>
         </PasswordGate>
       </div>

@@ -55,26 +55,24 @@ export default function MobileNav() {
   );
 
   return (
-    <nav className="fixed left-0 top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur-sm lg:hidden">
-      <div className="flex items-center gap-5 overflow-x-auto px-4 py-3 scrollbar-none">
-        {NAV_ITEMS.map((item) => {
-          const isActive = activeSection === item.href.slice(1);
-          return (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className={`whitespace-nowrap text-xs font-medium uppercase tracking-widest transition-colors ${
-                isActive
-                  ? "text-slate-100"
-                  : "text-slate-500 hover:text-slate-300"
-              }`}
-            >
-              {item.label}
-            </a>
-          );
-        })}
-      </div>
+    <nav className="mb-10 flex flex-wrap gap-x-5 gap-y-2 border-b border-slate-800 pb-4">
+      {NAV_ITEMS.map((item) => {
+        const isActive = activeSection === item.href.slice(1);
+        return (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
+            className={`text-sm font-medium uppercase tracking-widest transition-colors ${
+              isActive
+                ? "text-slate-100"
+                : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
     </nav>
   );
 }

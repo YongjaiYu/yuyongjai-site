@@ -14,9 +14,9 @@ export default function Home() {
   return (
     <div className="lg:flex">
       <GridGlow />
-      <MobileNav />
       <Sidebar />
-      <main className="min-h-screen px-6 pt-14 pb-24 lg:ml-[38%] lg:w-[62%] lg:px-12 lg:pt-24 lg:pb-24">
+      <main className="min-h-screen px-6 pt-8 pb-24 lg:ml-[38%] lg:w-[62%] lg:px-12 lg:pt-12 lg:pb-24">
+        <MobileNav />
         <About />
         <Dissertation />
         <Research />
