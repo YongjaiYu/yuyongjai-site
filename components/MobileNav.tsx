@@ -55,7 +55,7 @@ export default function MobileNav() {
   );
 
   return (
-    <nav className="sticky top-0 z-40 -mx-6 mb-10 flex flex-wrap gap-x-5 gap-y-2 border-b border-slate-800 bg-slate-950/90 px-6 pb-4 pt-4 backdrop-blur-sm lg:-mx-12 lg:px-12">
+    <nav className="sticky top-0 z-40 -mx-6 mb-10 flex flex-wrap gap-x-5 gap-y-2 border-b border-slate-800 bg-slate-950 px-6 pb-4 pt-4 lg:-mx-12 lg:px-12">
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.href.slice(1);
         return (
