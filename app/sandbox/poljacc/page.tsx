@@ -11,12 +11,21 @@ export const metadata: Metadata = {
       "Should you use TF-IDF or neural models? Diagnose vocabulary separability interactively.",
     type: "website",
     siteName: "Yongjai Yu",
+    images: [
+      {
+        url: "/og/poljacc.png",
+        width: 1200,
+        height: 630,
+        alt: "poljacc — Venn diagram of vocabulary overlap between two text classes",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "poljacc — Vocabulary Separability Diagnostic",
     description:
       "Should you use TF-IDF or neural models? Diagnose vocabulary separability interactively.",
+    images: ["/og/poljacc.png"],
   },
 };
 

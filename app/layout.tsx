@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yuyongj.ai"),
   title: "Yongjai Yu — Political Scientist",
   description:
     "Academic portfolio of Yongjai Yu, Ph.D. Student in Political Science at the University of California, Riverside. Research on the presidency, executive power, and computational political science.",
