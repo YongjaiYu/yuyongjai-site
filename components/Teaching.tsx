@@ -57,9 +57,9 @@ export default function Teaching() {
       </p>
 
       {/* Graduate Courses */}
-      <p className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
+      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
         Graduate
-      </p>
+      </h4>
       <ul className="space-y-2">
         {graduateCourses.map((course) => (
           <li key={course.code} className="text-base">
@@ -70,9 +70,9 @@ export default function Teaching() {
       </ul>
 
       {/* Undergraduate Courses */}
-      <p className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
+      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
         Undergraduate
-      </p>
+      </h4>
       <ul className="space-y-2">
         {undergraduateCourses.map((course) => (
           <li key={course.code} className="text-base">

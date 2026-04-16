@@ -31,9 +31,9 @@ export default function Dissertation() {
         Strategic Unilateralism and Presidential Policy Choice
       </h4>
 
-      <p className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
+      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
         Overview
-      </p>
+      </h4>
 
       <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
         This dissertation examines how presidents calibrate the content of
