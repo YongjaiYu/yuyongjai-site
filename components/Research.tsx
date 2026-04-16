@@ -45,14 +45,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
       "Uses CLIP technology to analyze how political videos portray megadonors. Applies multimodal deep learning to understand the framing of political visual media.",
     tags: ["Multimodal Analysis", "CLIP", "Political Communication"],
   },
-  {
-    title: "Collaborative Pedagogy at Minority-Serving Institutions",
-    coauthors:
-      "with Karina Alpayeva, Emmanoel Ferreira, Sarah Siddique, and Kim Yi Dionne",
-    description:
-      "Active learning strategies in large enrollment courses. Examines collaborative teaching approaches that improve student outcomes at minority-serving institutions.",
-    tags: ["Pedagogy", "Higher Education", "Active Learning"],
-  },
 ];
 
 const WORKS_IN_PROGRESS: WorkInProgress[] = [
@@ -72,6 +64,10 @@ const WORKS_IN_PROGRESS: WorkInProgress[] = [
   {
     title: "Economic Conditions and Presidential Agenda-Setting",
     coauthors: "with Jon Rogowski and Alex Evert",
+  },
+  {
+    title: "Collaborative Pedagogy at Minority-Serving Institutions",
+    coauthors: "with Karina Alpayeva, Emmanoel Ferreira, Sarah Siddique, and Kim Yi Dionne",
   },
 ];
 
