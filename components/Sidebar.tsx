@@ -81,7 +81,7 @@ export default function Sidebar() {
         </p>
 
         {/* Research Tree */}
-        <div className="mb-8 text-sm leading-relaxed text-slate-600">
+        <div className="mb-6 text-sm leading-snug text-slate-600">
           <p>├── <span className="text-emerald-400">presidential-power/</span></p>
           <p>│   ├── <span className="text-blue-400">unilateral-actions/</span></p>
           <p>│   └── <span className="text-blue-400">cost-constrained-model/</span></p>
@@ -124,6 +124,22 @@ export default function Sidebar() {
               );
             })}
           </ul>
+          <div className="mt-6 flex gap-4 text-xs text-slate-500">
+            <a
+              href="mailto:yongjai.yu@email.ucr.edu"
+              className="transition-colors hover:text-cyan-400"
+            >
+              email
+            </a>
+            <a
+              href="https://github.com/YongjaiYu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-cyan-400"
+            >
+              github
+            </a>
+          </div>
         </nav>
 
       </div>
