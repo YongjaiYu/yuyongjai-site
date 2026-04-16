@@ -46,7 +46,7 @@ const LABELS: Record<string, Record<Lang, string>> = {
   title: { ko: "대통령령 탐색기", en: "Korean Presidential Decree Explorer" },
   subtitle: {
     ko: "1988년부터 현재까지 대한민국 대통령령 44,345건의 개정 이력을 탐색합니다.",
-    en: "Explore 44,345 amendments to Korean presidential decrees from 1988 to present.",
+    en: "Explore 44,345 amendments to Korean presidential decrees from 1988 to March 2026.",
   },
   president: { ko: "대통령", en: "President" },
   allPresidents: { ko: "전체 대통령", en: "All Presidents" },
@@ -223,7 +223,7 @@ export default function KoreanDecrees() {
             {t("president")}
           </p>
           <p className="mt-1 text-2xl font-bold text-slate-100">9</p>
-          <p className="text-xs text-slate-500">1988–present</p>
+          <p className="text-xs text-slate-500">1988–2026</p>
         </div>
         <div className="rounded-lg border border-slate-800 p-4">
           <p className="text-xs uppercase tracking-widest text-slate-500">

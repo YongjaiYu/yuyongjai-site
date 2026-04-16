@@ -4,7 +4,7 @@ import KoreanDecrees from "@/components/playground/KoreanDecrees";
 export const metadata: Metadata = {
   title: "Korean Presidential Decree Explorer — Yongjai Yu",
   description:
-    "Explore 44,345 amendments to Korean presidential decrees (대통령령) from 1988 to present. Filter by president, ministry, and amendment type.",
+    "Explore 44,345 amendments to Korean presidential decrees (대통령령) from 1988 to March 2026. Filter by president, ministry, and amendment type.",
   openGraph: {
     title: "Korean Presidential Decree Explorer",
     description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Korean Presidential Decree Explorer",
     description:
-      "44,345 amendments to Korean presidential decrees (대통령령) from 1988 to present.",
+      "44,345 amendments to Korean presidential decrees (대통령령) from 1988 to March 2026.",
   },
 };
 
@@ -61,7 +61,7 @@ export default function KoreanDecreesPage() {
           </h1>
           <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-slate-400">
             Explore 44,345 amendments to Korean presidential decrees
-            (대통령령) across nine administrations, from 1988 to present.
+            (대통령령) across nine administrations, from 1988 to March 2026.
             Data sourced from the Korea Legislation Research Institute.
           </p>
         </header>
