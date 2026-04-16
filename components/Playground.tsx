@@ -44,8 +44,27 @@ export default function Playground() {
             </h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-slate-400">
               Explore 44,345 amendments to Korean presidential decrees
-              (대통령령) across eight administrations, from 1988 to present.
+              (대통령령) across nine administrations, from 1988 to March 2026.
               Filter by president, ministry, and amendment type.
+            </p>
+            <span className="mt-3 inline-block text-xs font-medium uppercase tracking-widest text-slate-600 transition-colors group-hover:text-slate-400">
+              Try it &rarr;
+            </span>
+          </a>
+        </div>
+
+        <div>
+          <a
+            href="/sandbox/text-polarization"
+            className="group block rounded-lg border border-slate-800 p-5 transition-colors hover:border-slate-600"
+          >
+            <h3 className="text-lg font-medium text-cyan-400 transition-colors group-hover:text-cyan-300">
+              Text Polarization
+            </h3>
+            <p className="mt-2 font-sans text-sm leading-relaxed text-slate-400">
+              How different is the language Democrats and Republicans use on
+              the House floor? Vocabulary divergence across the 103rd–109th
+              Congress (1993–2006).
             </p>
             <span className="mt-3 inline-block text-xs font-medium uppercase tracking-widest text-slate-600 transition-colors group-hover:text-slate-400">
               Try it &rarr;
