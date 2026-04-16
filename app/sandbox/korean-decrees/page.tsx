@@ -61,7 +61,7 @@ export default function KoreanDecreesPage() {
           </h1>
           <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-slate-400">
             Explore 44,345 amendments to Korean presidential decrees
-            (대통령령) across eight administrations, from 1988 to present.
+            (대통령령) across nine administrations, from 1988 to present.
             Data sourced from the Korea Legislation Research Institute.
           </p>
         </header>

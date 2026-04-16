@@ -84,8 +84,10 @@ export default function KoreanDecrees() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterPres, setFilterPres] = useState<string | null>(null);
   const [filterType, setFilterType] = useState<string | null>(null);
+  const [filterYear, setFilterYear] = useState<number | null>(null);
   const [searchLoading, setSearchLoading] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const t = useCallback((key: string) => LABELS[key]?.[lang] || key, [lang]);
 
@@ -119,13 +121,30 @@ export default function KoreanDecrees() {
   );
 
   const searchResults = useMemo(() => {
-    if (!searchData || searchQuery.length < 2) return null;
-    const q = searchQuery.toLowerCase();
-    let results = searchData.filter((d) => d.n.toLowerCase().includes(q));
+    if (!searchData) return null;
+    if (!filterYear && !filterPres && searchQuery.length < 2) return null;
+    let results = searchData;
+    if (searchQuery.length >= 2) {
+      const q = searchQuery.toLowerCase();
+      results = results.filter((d) => d.n.toLowerCase().includes(q));
+    }
+    if (filterYear) results = results.filter((d) => d.y === filterYear);
     if (filterPres) results = results.filter((d) => d.p === filterPres);
     if (filterType) results = results.filter((d) => d.t === filterType);
     return results.slice(0, 100);
-  }, [searchData, searchQuery, filterPres, filterType]);
+  }, [searchData, searchQuery, filterPres, filterType, filterYear]);
+
+  const drillDown = useCallback(
+    async (opts: { year?: number; pres?: string }) => {
+      await loadSearchData();
+      setFilterYear(opts.year ?? null);
+      setFilterPres(opts.pres ?? null);
+      setFilterType(null);
+      if (!opts.year && !opts.pres) setSearchQuery("");
+      setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    },
+    [loadSearchData]
+  );
 
   const presName = useCallback(
     (ko: string) => {
@@ -203,8 +222,8 @@ export default function KoreanDecrees() {
           <p className="text-xs uppercase tracking-widest text-slate-500">
             {t("president")}
           </p>
-          <p className="mt-1 text-2xl font-bold text-slate-100">8</p>
-          <p className="text-xs text-slate-500">1988–2026</p>
+          <p className="mt-1 text-2xl font-bold text-slate-100">9</p>
+          <p className="text-xs text-slate-500">1988–present</p>
         </div>
         <div className="rounded-lg border border-slate-800 p-4">
           <p className="text-xs uppercase tracking-widest text-slate-500">
@@ -235,11 +254,12 @@ export default function KoreanDecrees() {
             return (
               <div
                 key={y}
-                className="group relative flex-1"
+                className="group relative flex-1 cursor-pointer"
                 style={{ height: "100%" }}
+                onClick={() => drillDown({ year: y })}
               >
                 <div
-                  className="absolute bottom-0 w-full rounded-t-sm bg-cyan-400/40 transition-colors hover:bg-cyan-400/60"
+                  className={`absolute bottom-0 w-full rounded-t-sm transition-colors hover:bg-cyan-400/60 ${filterYear === y ? "bg-cyan-400/70" : "bg-cyan-400/40"}`}
                   style={{ height: `${h}%` }}
                 />
                 <div className="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-[10px] text-slate-200 group-hover:block">
@@ -264,8 +284,8 @@ export default function KoreanDecrees() {
             if (!stat) return null;
             const w = (stat.total / summary.meta.total) * 100;
             return (
-              <div key={ko} className="flex items-center gap-3">
-                <span className="w-28 flex-shrink-0 text-xs text-slate-400">
+              <div key={ko} className="flex cursor-pointer items-center gap-3" onClick={() => drillDown({ pres: ko })}>
+                <span className={`w-36 flex-shrink-0 text-xs ${filterPres === ko ? "text-cyan-400" : "text-slate-400"}`}>
                   {lang === "en" ? info.en : ko}
                 </span>
                 <div className="relative h-5 flex-1">
@@ -294,7 +314,7 @@ export default function KoreanDecrees() {
               const w = (count / maxMin) * 100;
               return (
                 <div key={ko} className="flex items-center gap-3">
-                  <span className="w-40 flex-shrink-0 truncate text-xs text-slate-400" title={ministryName(ko)}>
+                  <span className="w-64 flex-shrink-0 truncate text-xs text-slate-400" title={ministryName(ko)}>
                     {ministryName(ko)}
                   </span>
                   <div className="relative h-4 flex-1">
@@ -313,8 +333,30 @@ export default function KoreanDecrees() {
       </div>
 
       {/* Search */}
-      <div className="rounded-lg border border-slate-800 p-6">
+      <div ref={resultsRef} className="rounded-lg border border-slate-800 p-6">
         <h3 className="mb-4 text-sm font-medium text-slate-200">{t("search")}</h3>
+        {(filterYear || filterPres) && (
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            {filterYear && (
+              <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-400">
+                {filterYear}
+                <button onClick={() => setFilterYear(null)} className="ml-1.5 text-cyan-400/60 hover:text-cyan-400">&times;</button>
+              </span>
+            )}
+            {filterPres && (
+              <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-400">
+                {presName(filterPres)}
+                <button onClick={() => setFilterPres(null)} className="ml-1.5 text-cyan-400/60 hover:text-cyan-400">&times;</button>
+              </span>
+            )}
+            <button
+              onClick={() => { setFilterYear(null); setFilterPres(null); setFilterType(null); }}
+              className="text-[10px] text-slate-500 hover:text-slate-300"
+            >
+              {lang === "ko" ? "필터 초기화" : "Clear all"}
+            </button>
+          </div>
+        )}
         <div className="flex flex-wrap gap-3">
           <input
             ref={searchRef}
