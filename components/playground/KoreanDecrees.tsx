@@ -53,7 +53,7 @@ const LABELS: Record<string, Record<Lang, string>> = {
   type: { ko: "개정유형", en: "Amendment Type" },
   allTypes: { ko: "전체 유형", en: "All Types" },
   search: { ko: "법령명 검색", en: "Search decree name" },
-  searchPlaceholder: { ko: "검색어 입력...", en: "Type to search..." },
+  searchPlaceholder: { ko: "법령명 입력 (예: 소득세법)", en: "Decree name (e.g. 소득세법, National Tax)" },
   yearly: { ko: "연도별 개정 현황", en: "Amendments by Year" },
   byPresident: { ko: "대통령별 현황", en: "By President" },
   byMinistry: { ko: "소관부처별 현황", en: "By Ministry" },
@@ -288,13 +288,13 @@ export default function KoreanDecrees() {
         <h3 className="mb-4 text-sm font-medium text-slate-200">{t("byMinistry")}</h3>
         <div className="space-y-1.5">
           {Object.entries(summary.top_ministries)
-            .slice(0, 12)
+            .slice(0, 20)
             .map(([ko, count]) => {
               const maxMin = Object.values(summary.top_ministries)[0];
               const w = (count / maxMin) * 100;
               return (
                 <div key={ko} className="flex items-center gap-3">
-                  <span className="w-32 flex-shrink-0 truncate text-xs text-slate-400">
+                  <span className="w-40 flex-shrink-0 truncate text-xs text-slate-400" title={ministryName(ko)}>
                     {ministryName(ko)}
                   </span>
                   <div className="relative h-4 flex-1">
