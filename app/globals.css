@@ -22,6 +22,9 @@ body {
   color: #f8fafc;
 }
 
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Minimal scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
