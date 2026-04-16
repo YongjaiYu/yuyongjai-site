@@ -126,15 +126,6 @@ export default function Sidebar() {
           </ul>
         </nav>
 
-        {/* Email */}
-        <div className="mt-6 pt-4">
-          <a
-            href="mailto:yongjai.yu@email.ucr.edu"
-            className="text-sm text-slate-500 transition-colors hover:text-cyan-400"
-          >
-            yongjai.yu@email.ucr.edu
-          </a>
-        </div>
       </div>
     </aside>
   );

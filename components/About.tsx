@@ -59,9 +59,9 @@ export default function About() {
 
       {/* Education */}
       <div className="mt-12">
-        <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
+        <p className="mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
           Education
-        </h3>
+        </p>
         <ul className="space-y-3">
           {EDUCATION.map((entry) => (
             <li key={entry.degree} className="text-base">
