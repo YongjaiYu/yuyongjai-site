@@ -109,16 +109,16 @@ function HighlightedAuthors({
 export default function Research() {
   return (
     <section id="research" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-200">Research</h3>
+      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Research</h3>
 
-      <p className="mb-8 max-w-xl text-base leading-relaxed text-slate-200">
+      <p className="mb-8 max-w-xl text-base leading-relaxed text-slate-300">
         My research brings together political institutions, political
         communication, and computational methods to study political actors&apos;
         strategy and representation.
       </p>
 
       {/* Publications */}
-      <h3 className="mt-6 mb-6 text-xl font-semibold text-slate-200">
+      <h3 className="mt-6 mb-6 text-xl font-semibold text-slate-100">
         Publications
       </h3>
 
@@ -142,7 +142,7 @@ export default function Research() {
       </div>
 
       {/* Working Papers */}
-      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-200">
+      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-100">
         Working Papers
       </h3>
 
@@ -161,7 +161,7 @@ export default function Research() {
             {paper.status && (
               <p className="mt-1 text-base text-slate-500">{paper.status}</p>
             )}
-            <p className="mt-2 text-base leading-relaxed text-slate-200">
+            <p className="mt-2 text-base leading-relaxed text-slate-300">
               {paper.description}
             </p>
             <p className="mt-2 text-sm text-slate-600">
@@ -172,7 +172,7 @@ export default function Research() {
       </div>
 
       {/* Works in Progress */}
-      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-200">
+      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-100">
         Works in Progress
       </h3>
 

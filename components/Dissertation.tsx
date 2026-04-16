@@ -25,7 +25,7 @@ const CHAPTERS = [
 export default function Dissertation() {
   return (
     <section id="dissertation" className="py-20">
-      <h3 className="mb-6 text-2xl font-semibold text-slate-200">Dissertation</h3>
+      <h3 className="mb-6 text-2xl font-semibold text-slate-100">Dissertation</h3>
 
       <h4 className="text-lg font-semibold text-slate-100">
         Strategic Unilateralism and Presidential Policy Choice
@@ -35,7 +35,7 @@ export default function Dissertation() {
         Overview
       </h3>
 
-      <p className="max-w-xl text-base leading-relaxed text-slate-200">
+      <p className="max-w-xl text-base leading-relaxed text-slate-300">
         This dissertation examines how presidents calibrate the content of
         unilateral actions to manage institutional constraints and maximize
         political benefits. The first chapter proposes a new measurement
