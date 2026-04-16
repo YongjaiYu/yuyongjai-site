@@ -70,11 +70,12 @@ export default function Sidebar() {
             priority
           />
           <h1 className="mt-5 text-4xl font-bold text-slate-100">Yongjai Yu</h1>
+          <p className="mt-2 text-base text-slate-400">Ph.D. Student at UCR</p>
         </div>
 
         {/* Tagline */}
         <p className="mb-6 text-lg leading-relaxed text-slate-400">
-          I study what policy presidents pursue with unilateral actions
+          I study how presidents use unilateral action to pursue policy
           under institutional constraint, and I develop computational
           methods to measure policy content at scale.
         </p>

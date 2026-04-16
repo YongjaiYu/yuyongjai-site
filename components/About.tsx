@@ -1,10 +1,8 @@
 const RESEARCH_INTERESTS = [
   "Presidential Power",
-  "Separation of Powers",
+  "Political Institutions",
+  "LLM",
   "Computational Social Science",
-  "LLMs",
-  "Multimodal Analysis",
-  "Text Analysis",
 ];
 
 const EDUCATION = [

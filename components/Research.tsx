@@ -26,14 +26,14 @@ const WORKING_PAPERS: WorkingPaper[] = [
       "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
     coauthors: "with Eunseong Oh",
     description:
-      "Principled guidance for choosing among text representation models. Provide the concept of word separability.",
+      "Develops a diagnostic of vocabulary separability to guide model selection in political text classification, and explains when sparse representations outperform dense alternatives.",
     tags: ["Text Analysis", "NLP", "Model Selection"],
   },
   {
     title:
       "When Conspiracy Belief Mobilizes Donors: Campaign Contributions in American Politics",
     description:
-      "Politicians may spread conspiracy theories to raise funds from extremists. Uses 2012 and 2016 ANES data. Finding: Among Republicans, conspiracy theory believers contribute more to candidates.",
+      "Examines whether conspiracy beliefs shape campaign contributions in American politics, using the 2012 and 2016 ANES. The paper links conspiratorial belief to donor behavior across partisan contexts.",
     tags: ["Campaign Finance", "Conspiracy Theories", "ANES"],
   },
   {
@@ -110,6 +110,12 @@ export default function Research() {
   return (
     <section id="research" className="py-20">
       <h3 className="mb-6 text-2xl font-semibold text-slate-200">Research</h3>
+
+      <p className="mb-8 max-w-xl text-base leading-relaxed text-slate-200">
+        My research brings together political institutions, political
+        communication, and computational methods to study political actors&apos;
+        strategy and representation.
+      </p>
 
       {/* Publications */}
       <h3 className="mt-6 mb-6 text-xl font-semibold text-slate-200">

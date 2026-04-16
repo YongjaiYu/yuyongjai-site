@@ -28,7 +28,7 @@ export default function Dissertation() {
       <h3 className="mb-6 text-2xl font-semibold text-slate-200">Dissertation</h3>
 
       <h4 className="text-lg font-semibold text-slate-100">
-        The Ideological Contents and Policy Displacement of Unilateral Action
+        Strategic Unilateralism and Presidential Policy Choice
       </h4>
 
       <h3 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
