@@ -164,7 +164,7 @@ export default function Research() {
             <p className="mt-2 text-base font-sans leading-relaxed text-slate-300">
               {paper.description}
             </p>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-500">
               {paper.tags.join(" \u00B7 ")}
             </p>
           </article>

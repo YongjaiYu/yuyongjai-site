@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     "Unilateral Actions",
     "Computational Political Science",
     "LLMs",
-    "Bayesian Statistics",
   ],
   authors: [{ name: "Yongjai Yu" }],
   openGraph: {

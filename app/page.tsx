@@ -7,7 +7,6 @@ import Teaching from "@/components/Teaching";
 import Software from "@/components/Software";
 import CV from "@/components/CV";
 import Footer from "@/components/Footer";
-import FadeIn from "@/components/FadeIn";
 
 export default function Home() {
   return (
@@ -15,12 +14,12 @@ export default function Home() {
       <GridGlow />
       <Sidebar />
       <main className="min-h-screen px-6 py-24 lg:ml-[38%] lg:w-[62%] lg:px-12 lg:py-24">
-        <FadeIn><About /></FadeIn>
-        <FadeIn><Dissertation /></FadeIn>
-        <FadeIn><Research /></FadeIn>
-        <FadeIn><Teaching /></FadeIn>
-        <FadeIn><Software /></FadeIn>
-        <FadeIn><CV /></FadeIn>
+        <About />
+        <Dissertation />
+        <Research />
+        <Teaching />
+        <Software />
+        <CV />
         <Footer />
       </main>
     </div>
