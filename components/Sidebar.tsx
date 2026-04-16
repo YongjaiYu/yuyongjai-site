@@ -74,7 +74,7 @@ export default function Sidebar() {
         </div>
 
         {/* Tagline */}
-        <p className="mb-6 text-lg leading-relaxed text-slate-400">
+        <p className="mb-6 text-base leading-relaxed text-slate-400">
           I study how presidents use unilateral action to pursue policy
           under institutional constraint, and I develop computational
           methods to measure policy content at scale.
