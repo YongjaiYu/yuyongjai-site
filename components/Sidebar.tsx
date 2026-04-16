@@ -57,7 +57,7 @@ export default function Sidebar() {
   );
 
   return (
-    <aside className="relative px-4 py-8 lg:fixed lg:left-0 lg:top-0 lg:flex lg:h-screen lg:w-[38%] lg:justify-center lg:overflow-y-auto lg:px-10">
+    <aside className="relative px-4 py-8 lg:fixed lg:left-0 lg:top-0 lg:flex lg:h-screen lg:w-[38%] lg:justify-center lg:px-10">
       <div className="mx-auto w-full max-w-sm lg:my-auto">
         {/* Profile */}
         <div className="mb-6">
