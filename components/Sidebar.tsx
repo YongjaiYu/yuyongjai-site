@@ -105,7 +105,7 @@ export default function Sidebar() {
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`group flex items-center text-base transition-colors ${
+                    className={`group flex items-center text-xs font-medium uppercase tracking-widest transition-colors ${
                       isActive
                         ? "text-slate-100"
                         : "text-slate-500 hover:text-slate-300"

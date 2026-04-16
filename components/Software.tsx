@@ -12,7 +12,7 @@ export default function Software() {
         >
           poljacc
         </a>
-        <p className="mt-2 text-sm leading-relaxed text-slate-400">
+        <p className="mt-2 font-sans text-sm leading-relaxed text-slate-400">
           Vocabulary separability diagnostics for text classification.
           <br />
           Companion package for Oh and Yu (2026), &ldquo;When Sparse Beats

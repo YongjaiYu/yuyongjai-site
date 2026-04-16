@@ -28,7 +28,7 @@ export default function About() {
     <section id="about" className="py-20">
       <h3 className="mb-6 text-2xl font-semibold text-slate-100">About</h3>
 
-      <p className="max-w-xl text-base leading-relaxed text-slate-300">
+      <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
         I study presidential power in the separation of powers system. My
         research asks what policy presidents pursue through unilateral
         actions, and how they calibrate the policy content of those actions
@@ -37,7 +37,7 @@ export default function About() {
         actions.
       </p>
 
-      <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+      <p className="mt-4 max-w-xl text-base font-sans leading-relaxed text-slate-300">
         Substantively, I work on American political institutions, executive
         politics, legislative politics, and political communication.
         Methodologically, I use large-scale text analysis, large language

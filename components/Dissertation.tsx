@@ -35,7 +35,7 @@ export default function Dissertation() {
         Overview
       </h3>
 
-      <p className="max-w-xl text-base leading-relaxed text-slate-300">
+      <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
         This dissertation examines how presidents calibrate the content of
         unilateral actions to manage institutional constraints and maximize
         political benefits. The first chapter proposes a new measurement
@@ -57,7 +57,7 @@ export default function Dissertation() {
               {chapter.title}
             </h4>
             <p className="text-base text-cyan-400/70">{chapter.subtitle}</p>
-            <p className="mt-1 text-base text-slate-400">{chapter.description}</p>
+            <p className="mt-1 font-sans text-base text-slate-400">{chapter.description}</p>
           </div>
         ))}
       </div>

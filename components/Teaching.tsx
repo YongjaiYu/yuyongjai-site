@@ -52,7 +52,7 @@ export default function Teaching() {
     <section id="teaching" className="py-20">
       <h3 className="mb-6 text-2xl font-semibold text-slate-100">Teaching</h3>
 
-      <p className="text-base text-slate-300">
+      <p className="font-sans text-base text-slate-300">
         Teaching Assistant &mdash; UC Riverside (2023 &ndash; Present)
       </p>
 
