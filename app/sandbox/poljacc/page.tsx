@@ -77,7 +77,7 @@ export default function PoljaccPage() {
         <PoljaccDemo />
         <footer className="mt-16 border-t border-slate-800 pt-6 font-sans text-xs text-slate-600">
           <p>
-            Companion tool for Oh and Yu (2026), &ldquo;When Sparse Beats Dense:
+            Companion tool for Oh and Yu, &ldquo;When Sparse Beats Dense:
             Vocabulary Separability and Model Selection in Political Text
             Analysis.&rdquo;
           </p>

@@ -6,12 +6,6 @@ const MIN_DOCS = 5;
 const MAX_DOCS = 500;
 const MAX_CHARS = 500000;
 
-const BIBTEX = `@article{oh2026sparse,
-  title={When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis},
-  author={Oh, Hyein and Yu, Yongjai},
-  journal={Political Analysis},
-  year={2026}
-}`;
 
 const EXAMPLES = [
   {
@@ -345,7 +339,6 @@ export default function PoljaccDemo() {
   const [classAText, setClassAText] = useState("");
   const [classBText, setClassBText] = useState("");
   const [result, setResult] = useState<ReturnType<typeof computeJaccard> | null>(null);
-  const [copied, setCopied] = useState(false);
 
   const docsACount = useMemo(() => parseDocs(classAText).length, [classAText]);
   const docsBCount = useMemo(() => parseDocs(classBText).length, [classBText]);
@@ -406,12 +399,6 @@ export default function PoljaccDemo() {
     URL.revokeObjectURL(url);
   }, [result, classALabel, classBLabel, recommendation]);
 
-  const handleCopyBibtex = useCallback(() => {
-    navigator.clipboard.writeText(BIBTEX).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }, []);
 
   const docCountLabel = (count: number) => {
     if (count === 0) return "Separate documents with blank lines";
@@ -577,12 +564,6 @@ export default function PoljaccDemo() {
               className="rounded border border-slate-700 px-4 py-1.5 font-sans text-xs text-slate-400 transition-colors hover:border-slate-500 hover:text-slate-200"
             >
               Download CSV
-            </button>
-            <button
-              onClick={handleCopyBibtex}
-              className="rounded border border-slate-700 px-4 py-1.5 font-sans text-xs text-slate-400 transition-colors hover:border-slate-500 hover:text-slate-200"
-            >
-              {copied ? "Copied!" : "Copy BibTeX"}
             </button>
           </div>
 
