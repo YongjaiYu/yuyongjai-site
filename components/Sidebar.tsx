@@ -124,7 +124,7 @@ export default function Sidebar() {
               );
             })}
           </ul>
-          <div className="mt-6 flex gap-5 text-slate-500">
+          <div className="mt-6 flex gap-5 text-slate-100">
             <a
               href="mailto:yongjai.yu@email.ucr.edu"
               aria-label="Email"
