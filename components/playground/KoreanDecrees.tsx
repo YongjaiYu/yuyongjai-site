@@ -53,7 +53,7 @@ const LABELS: Record<string, Record<Lang, string>> = {
   type: { ko: "개정유형", en: "Amendment Type" },
   allTypes: { ko: "전체 유형", en: "All Types" },
   search: { ko: "법령명 검색", en: "Search decree name" },
-  searchPlaceholder: { ko: "법령명 입력 (예: 소득세법)", en: "Decree name (e.g. 소득세법, National Tax)" },
+  searchPlaceholder: { ko: "법령명 입력 (예: 소득세법)", en: "Decree name (e.g. 소득세법, Income Tax Act)" },
   yearly: { ko: "연도별 개정 현황", en: "Amendments by Year" },
   byPresident: { ko: "대통령별 현황", en: "By President" },
   byMinistry: { ko: "소관부처별 현황", en: "By Ministry" },
