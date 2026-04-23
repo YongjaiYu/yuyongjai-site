@@ -63,8 +63,9 @@ export default function Playground() {
             </h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-slate-400">
               How different is the language Democrats and Republicans use on
-              the House floor? Vocabulary divergence across the 103rd–109th
-              Congress (1993–2006).
+              the floor? Eight decades of vocabulary divergence across the
+              79th–119th Congress (1945–2026), with chamber splits, term
+              trajectories, and era comparison.
             </p>
             <span className="mt-3 inline-block text-xs font-medium uppercase tracking-widest text-slate-600 transition-colors group-hover:text-slate-400">
               Try it &rarr;

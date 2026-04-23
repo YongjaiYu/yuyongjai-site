@@ -4,11 +4,11 @@ import TextPolarization from "@/components/playground/TextPolarization";
 export const metadata: Metadata = {
   title: "Text Polarization — Yongjai Yu",
   description:
-    "How different is the language Democrats and Republicans use on the floor? Explore vocabulary divergence across the 103rd–109th Congress (1993–2006).",
+    "How different is the language Democrats and Republicans use on the floor? Explore vocabulary divergence across the 79th–119th Congress (1945–2026).",
   openGraph: {
     title: "Text Polarization: D vs R Floor Speech",
     description:
-      "Vocabulary overlap between Democratic and Republican floor speeches, 103rd–109th Congress.",
+      "Vocabulary overlap between Democratic and Republican floor speeches, 79th–119th Congress.",
     type: "website",
     siteName: "Yongjai Yu",
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Text Polarization: D vs R Floor Speech",
     description:
-      "Vocabulary overlap between Democratic and Republican floor speeches, 103rd–109th Congress.",
+      "Vocabulary overlap between Democratic and Republican floor speeches, 79th–119th Congress.",
   },
 };
 
@@ -61,15 +61,20 @@ export default function TextPolarizationPage() {
           </h1>
           <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-slate-400">
             How different is the language Democrats and Republicans use on the
-            House floor? Explore vocabulary divergence across the 103rd–109th
-            Congress (1993–2006), using Jaccard similarity and log-odds ratios.
+            floor? Eight decades of vocabulary divergence across the 79th–119th
+            Congress (1945–2026), measured by Jaccard similarity and log-odds
+            ratios. Chamber splits, term trajectories, and era-to-era
+            comparison.
           </p>
         </header>
         <TextPolarization />
         <footer className="mt-16 border-t border-slate-800 pt-6 font-sans text-xs text-slate-600">
           <p>
-            Data: Congressional Record floor speeches via Gentzkow, Shapiro,
-            and Taddy (2019). Public data compiled for research purposes.
+            Data: Congressional Record floor speeches. 79th–96th from
+            Hein-Bound (Stanford, bound edition via Gentzkow, Shapiro, Taddy
+            2019); 97th–107th from Hein-Daily (same source, daily edition);
+            108th–119th rebuilt from GovInfo CREC. Older bound-edition volumes
+            are OCR-based and noisier than post-1981 daily editions.
           </p>
         </footer>
       </div>

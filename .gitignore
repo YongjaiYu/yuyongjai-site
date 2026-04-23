@@ -5,3 +5,5 @@ out
 ._*
 *.tsbuildinfo
 .vercel
+scripts/cache/
+scripts/*.log
