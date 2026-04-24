@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
-import KoreanDecrees from "@/components/playground/KoreanDecrees";
+import PoljaccDemo from "@/components/playground/PoljaccDemo";
 
 export const metadata: Metadata = {
-  title: "Korean Presidential Decree Explorer — Yongjai Yu",
+  title: "poljacc — Vocabulary Separability Diagnostic",
   description:
-    "Explore 44,345 amendments to Korean presidential decrees (대통령령) from 1988 to March 2026. Filter by president, ministry, and amendment type.",
+    "Should you use sparse or dense models for your text classification? Diagnose vocabulary separability with Jaccard overlap.",
   openGraph: {
-    title: "Korean Presidential Decree Explorer",
+    title: "poljacc — Vocabulary Separability Diagnostic",
     description:
-      "44,345 amendments to Korean presidential decrees. Search by name, president, ministry, and type.",
+      "Should you use TF-IDF or neural models? Diagnose vocabulary separability interactively.",
     type: "website",
     siteName: "Yongjai Yu",
+    images: [
+      {
+        url: "/og/poljacc.png",
+        width: 1200,
+        height: 630,
+        alt: "poljacc — Venn diagram of vocabulary overlap between two text classes",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Korean Presidential Decree Explorer",
+    title: "poljacc — Vocabulary Separability Diagnostic",
     description:
-      "44,345 amendments to Korean presidential decrees (대통령령) from 1988 to March 2026.",
+      "Should you use TF-IDF or neural models? Diagnose vocabulary separability interactively.",
+    images: ["/og/poljacc.png"],
   },
 };
 
@@ -26,11 +35,11 @@ const NAV_ITEMS = [
   { label: "Research", href: "/#research" },
   { label: "Teaching", href: "/#teaching" },
   { label: "Software", href: "/#software" },
-  { label: "Sandbox", href: "/#sandbox" },
+  { label: "Workbench", href: "/#workbench" },
   { label: "CV", href: "/#cv" },
 ];
 
-export default function KoreanDecreesPage() {
+export default function PoljaccPage() {
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-12 sm:px-8 lg:px-16">
       <nav className="fixed left-0 top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur-sm">
@@ -57,19 +66,24 @@ export default function KoreanDecreesPage() {
       <div className="mx-auto max-w-6xl pt-8">
         <header className="mb-10">
           <h1 className="text-3xl font-bold text-slate-100 sm:text-4xl">
-            Korean Decree Explorer
+            poljacc
           </h1>
           <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-slate-400">
-            Explore 44,345 amendments to Korean presidential decrees
-            (대통령령) across nine administrations, from 1988 to March 2026.
-            Data sourced from the Korea Legislation Research Institute.
+            Vocabulary separability diagnostic for text classification. Paste
+            documents from two classes to measure Jaccard overlap and get a
+            model recommendation: sparse (TF-IDF) or dense (neural).
           </p>
         </header>
-        <KoreanDecrees />
+        <PoljaccDemo />
         <footer className="mt-16 border-t border-slate-800 pt-6 font-sans text-xs text-slate-600">
           <p>
-            Data: 법제처 국가법령정보센터 (law.go.kr). Public records
-            compiled for research purposes.
+            Companion tool for Oh and Yu, &ldquo;When Sparse Beats Dense:
+            Vocabulary Separability and Model Selection in Political Text
+            Analysis.&rdquo;
+          </p>
+          <p className="mt-1">
+            Install the full package:{" "}
+            <code className="text-slate-400">pip install poljacc</code>
           </p>
         </footer>
       </div>

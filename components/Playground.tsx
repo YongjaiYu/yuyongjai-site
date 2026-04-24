@@ -1,7 +1,7 @@
 export default function Playground() {
   return (
-    <section id="sandbox" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Sandbox</h2>
+    <section id="workbench" className="py-20">
+      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Workbench</h2>
 
       <div className="space-y-6">
         <div>
@@ -17,7 +17,7 @@ export default function Playground() {
 
         <div>
           <a
-            href="/sandbox/poljacc"
+            href="/workbench/poljacc"
             className="group block rounded-lg border border-slate-800 p-5 transition-colors hover:border-slate-600"
           >
             <h3 className="text-lg font-medium text-cyan-400 transition-colors group-hover:text-cyan-300">
@@ -36,7 +36,7 @@ export default function Playground() {
 
         <div>
           <a
-            href="/sandbox/korean-decrees"
+            href="/workbench/korean-decrees"
             className="group block rounded-lg border border-slate-800 p-5 transition-colors hover:border-slate-600"
           >
             <h3 className="text-lg font-medium text-cyan-400 transition-colors group-hover:text-cyan-300">
@@ -55,7 +55,7 @@ export default function Playground() {
 
         <div>
           <a
-            href="/sandbox/text-polarization"
+            href="/workbench/text-polarization"
             className="group block rounded-lg border border-slate-800 p-5 transition-colors hover:border-slate-600"
           >
             <h3 className="text-lg font-medium text-cyan-400 transition-colors group-hover:text-cyan-300">
