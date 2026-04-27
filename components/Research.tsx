@@ -2,6 +2,7 @@ interface WorkingPaper {
   title: string;
   coauthors?: string;
   status?: string;
+  journal?: string;
   description: string;
   tags: string[];
 }
@@ -25,6 +26,8 @@ const WORKING_PAPERS: WorkingPaper[] = [
     title:
       "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
     coauthors: "with Eunseong Oh",
+    status: "Under review",
+    journal: "Political Analysis",
     description:
       "Develops a diagnostic of vocabulary separability to guide model selection in political text classification, and explains when sparse representations outperform dense alternatives.",
     tags: ["Text Analysis", "NLP", "Model Selection"],
@@ -159,7 +162,15 @@ export default function Research() {
               </p>
             )}
             {paper.status && (
-              <p className="mt-1 text-base text-slate-500">{paper.status}</p>
+              <p className="mt-1 text-base text-slate-500">
+                {paper.status}
+                {paper.journal && (
+                  <>
+                    {" at "}
+                    <span className="italic">{paper.journal}</span>
+                  </>
+                )}
+              </p>
             )}
             <p className="mt-2 text-base font-sans leading-relaxed text-slate-300">
               {paper.description}
