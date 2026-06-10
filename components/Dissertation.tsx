@@ -1,24 +1,26 @@
 const CHAPTERS = [
   {
     number: 1,
-    title: "Measuring Policy Displacement: Anchored Embedding Scaling and Status Quo",
-    subtitle: "Measurement",
+    title:
+      "Measuring the Ideological Content of Presidential Directives Using Anchored Embedding Scaling",
+    subtitle: "Classification and AES",
     description:
-      "This paper develops a measure of policy displacement in presidential directives by placing unilateral actions in relation to the inherited statutory status quo. It provides the measurement foundation for studying how far presidents move policy through unilateral means.",
+      "This chapter develops a classification scheme for unilateral actions and estimates the ideological positions of presidential directives. It classifies directives by policy content and instrument, then uses anchored embedding scaling to locate them in liberal-conservative policy space.",
   },
   {
     number: 2,
-    title: "Cost-Constrained Theory of Unilateral Action",
-    subtitle: "Theory",
+    title:
+      "Recovering the Status Quo for Unilateral Directives and Estimating Policy Displacement",
+    subtitle: "Status Quo and Policy Displacement",
     description:
-      "This paper develops a model in which presidents choose unilateral policy under institutional and political constraints. Rather than assuming binary costs of unilateral action, it argues that costs are continuous. Presidents stop short of their preferred policy when the political costs of displacement rise.",
+      "This chapter recovers the policy status quo from which presidents depart when they act unilaterally. It develops a pipeline for identifying the relevant status quo against which presidential directives can be interpreted as policy movement. Using anchored embedding scaling, the chapter estimates the policy displacement produced by unilateral actions.",
   },
   {
     number: 3,
-    title: "Presidential Representation with Unilateral Actions",
-    subtitle: "Application",
+    title: "A Cost-Constrained Model of Unilateral Action",
+    subtitle: "Theory and Institutional Constraint",
     description:
-      "This paper examines whether presidents use unilateral actions to represent national constituencies or particular groups defined by race, class, and gender. Using the ideological locations of unilateral actions estimated in Chapter 1, it studies whether the content of directives is targeted toward specific constituencies rather than the national median voter.",
+      "This chapter develops a cost-constrained model of unilateral action. It tests the theoretical prediction that presidents are likely to move policy toward the veto pivot, while arguing that presidents may stop short of this constraint boundary when institutional costs become sufficiently high. The chapter examines why presidents limit the policy displacement of unilateral actions even when unilateral authority allows them to move policy on their own.",
   },
 ];
 
@@ -39,10 +41,13 @@ export default function Dissertation() {
         This dissertation examines how presidents calibrate the content of
         unilateral actions to manage institutional constraints and maximize
         political benefits. The first chapter proposes a new measurement
-        framework to estimate the extent to which presidents move the policy
-        status quo. The second chapter extends the unilateral action model,
-        proposing a cost-constrained model. The third chapter studies whether
-        presidents represent national constituencies through unilateral actions.
+        framework, anchored embedding scaling (AES), to estimate the locations
+        of unilateral actions within the liberal-conservative policy space. The
+        second chapter recovers the inherited policy status quo for each
+        directive and estimates the policy displacement produced by unilateral
+        actions using AES. The third chapter extends existing models of
+        unilateral action by proposing a cost-constrained model of presidential
+        policy choice.
       </p>
 
       {/* Three Chapters */}

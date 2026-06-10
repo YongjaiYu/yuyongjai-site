@@ -1,0 +1,9 @@
+.git
+.next
+node_modules
+out
+.DS_Store
+._*
+*.tsbuildinfo
+scripts/cache/
+scripts/*.log

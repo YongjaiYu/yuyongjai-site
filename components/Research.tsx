@@ -26,8 +26,6 @@ const WORKING_PAPERS: WorkingPaper[] = [
     title:
       "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
     coauthors: "with Eunseong Oh",
-    status: "Under review",
-    journal: "Political Analysis",
     description:
       "Develops a diagnostic of vocabulary separability to guide model selection in political text classification, and explains when sparse representations outperform dense alternatives.",
     tags: ["Text Analysis", "NLP", "Model Selection"],
@@ -59,14 +57,6 @@ const WORKS_IN_PROGRESS: WorkInProgress[] = [
   {
     title:
       "Measuring Regulatory Change Through Delegated Legislation: Evidence from Korean Presidential Decrees",
-  },
-  {
-    title:
-      "Strategic Issue Blending in Congressional Floor Speeches: Topic Mixtures and Cross-Party Vote Mobilization",
-  },
-  {
-    title: "Economic Conditions and Presidential Agenda-Setting",
-    coauthors: "with Jon Rogowski and Alex Evert",
   },
   {
     title: "Collaborative Pedagogy at Minority-Serving Institutions",
