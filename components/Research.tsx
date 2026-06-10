@@ -50,6 +50,10 @@ const WORKING_PAPERS: WorkingPaper[] = [
 
 const WORKS_IN_PROGRESS: WorkInProgress[] = [
   {
+    title:
+      "Fandom Politics: A Formal Theory of Unconditional Partisan Loyalty and Democratic Backsliding",
+  },
+  {
     title: "Korean National Assembly YouTube Communication",
     coauthors: "with Kyusik Yang",
     status: "Multimodal analysis.",
