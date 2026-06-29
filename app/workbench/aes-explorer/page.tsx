@@ -5,11 +5,11 @@ import PasswordGate from "@/components/playground/PasswordGate";
 export const metadata: Metadata = {
   title: "AES Explorer — Yongjai Yu",
   description:
-    "Explore 20,961 presidential directives on a liberal–conservative scale. Interactive visualization using Anchored Embedding Scaling (AES).",
+    "Explore 24,625 presidential directives on a liberal–conservative scale. Interactive visualization using Anchored Embedding Scaling (AES).",
   openGraph: {
     title: "AES Explorer",
     description:
-      "Explore 20,961 presidential directives on a liberal–conservative scale. Filter by president, policy area, and directive type.",
+      "Explore 24,625 presidential directives on a liberal–conservative scale. Filter by president, ideology, and directive type.",
     type: "website",
     siteName: "Yongjai Yu",
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AES Explorer — Yongjai Yu",
     description:
-      "Explore 20,961 presidential directives on a liberal–conservative scale.",
+      "Explore 24,625 presidential directives on a liberal–conservative scale.",
     images: ["/og/aes-explorer.png"],
   },
 };
@@ -44,14 +44,14 @@ export default function AESExplorerPage() {
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-12 sm:px-8 lg:px-16">
       <nav className="fixed left-0 top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-3 sm:px-8 lg:px-16">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-6 sm:px-8 lg:px-16">
           <a
             href="/"
-            className="text-sm font-bold text-slate-100 transition-colors hover:text-cyan-400"
+            className="shrink-0 whitespace-nowrap text-sm font-bold text-slate-100 transition-colors hover:text-cyan-400"
           >
             Yongjai Yu
           </a>
-          <div className="flex gap-4 overflow-x-auto">
+          <div className="flex min-w-0 gap-4 overflow-x-auto">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -83,11 +83,12 @@ export default function AESExplorerPage() {
               Presidential Directives.&rdquo;
             </p>
             <p className="mt-1">
-              Score range: liberal (&minus;2) to conservative (+2). FDR&ndash;present, N&nbsp;=&nbsp;20,961.
+              Score range: liberal (&minus;1.75) to conservative (+2.26).
+              1789&ndash;2026, N&nbsp;=&nbsp;24,625.
             </p>
             <p className="mt-1">
               Ideological positions are anchored using bill-level ideal points
-              from Crosson et al. (2025).
+              from Crosson et al. (2025) plus Kim-calibrated anchors.
             </p>
           </footer>
         </PasswordGate>
