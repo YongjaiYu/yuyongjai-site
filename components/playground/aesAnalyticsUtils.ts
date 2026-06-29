@@ -5,6 +5,14 @@ import type {
   PartyYearBin,
   PartyYearStat,
 } from "./aesTypes";
+import { TRUMAN_START_YEAR } from "./aesConfig";
+
+export type YearParseConfig = {
+  readonly value: string;
+  readonly fallback: number;
+  readonly minYear: number;
+  readonly maxYear: number;
+};
 
 export type YearRange = {
   readonly from: number;
@@ -17,6 +25,14 @@ export type PartyAggregate = {
   readonly mean: number;
   readonly ideological: number;
   readonly nonIdeological: number;
+};
+
+export type PartyMeanDifference = {
+  readonly democraticMean: number;
+  readonly democraticN: number;
+  readonly republicanMean: number;
+  readonly republicanN: number;
+  readonly republicanMinusDemocratic: number;
 };
 
 export type DistributionLine = {
@@ -32,6 +48,19 @@ export type DistributionPoint = {
 
 export function clampYear(value: number, minYear: number, maxYear: number): number {
   return Math.min(maxYear, Math.max(minYear, value));
+}
+
+export function defaultStartYear(data: AESAnalyticsData): number {
+  const [minYear, maxYear] = data.meta.year_range;
+  return clampYear(TRUMAN_START_YEAR, minYear, maxYear);
+}
+
+export function parseYear(config: YearParseConfig): number {
+  const parsed = Number.parseInt(config.value, 10);
+  if (Number.isNaN(parsed)) {
+    return config.fallback;
+  }
+  return clampYear(parsed, config.minYear, config.maxYear);
 }
 
 export function partyAggregates(
@@ -59,6 +88,23 @@ export function partyAggregates(
       nonIdeological: bucket.non,
     }))
     .sort((a, b) => b.n - a.n);
+}
+
+export function partyMeanDifference(
+  aggregates: readonly PartyAggregate[],
+): PartyMeanDifference | null {
+  const democratic = aggregates.find((item) => item.party === "Democratic");
+  const republican = aggregates.find((item) => item.party === "Republican");
+  if (!democratic || !republican) {
+    return null;
+  }
+  return {
+    democraticMean: democratic.mean,
+    democraticN: democratic.n,
+    republicanMean: republican.mean,
+    republicanN: republican.n,
+    republicanMinusDemocratic: republican.mean - democratic.mean,
+  };
 }
 
 export function distributionLines(

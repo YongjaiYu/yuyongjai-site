@@ -3,10 +3,13 @@ import type { AESAnalyticsData, PresidentMean } from "./aesTypes";
 
 type AESPresidentMeansProps = {
   readonly data: AESAnalyticsData;
+  readonly startYear: number;
 };
 
-export function AESPresidentMeans({ data }: AESPresidentMeansProps) {
-  const presidents = data.president_means;
+export function AESPresidentMeans({ data, startYear }: AESPresidentMeansProps) {
+  const presidents = data.president_means.filter(
+    (president) => president.start_year >= startYear,
+  );
   const minMean = Math.min(...presidents.map((item) => item.mean_all));
   const maxMean = Math.max(...presidents.map((item) => item.mean_all));
   const liberal = presidents[0];
@@ -53,6 +56,10 @@ export function AESPresidentMeans({ data }: AESPresidentMeansProps) {
           Bars show each president&apos;s directive-level mean AES over the strict
           corpus. Ideological and non-ideological means are listed when both
           groups exist.
+        </div>
+        <div className="mt-3 text-xs leading-relaxed text-slate-500">
+          Displayed sample starts in {startYear}, so this panel begins with
+          Truman and excludes prewar presidents.
         </div>
       </div>
     </div>

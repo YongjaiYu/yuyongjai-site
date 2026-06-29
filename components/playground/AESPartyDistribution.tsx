@@ -3,10 +3,11 @@ import {
   distributionLines,
   maxDistributionCount,
   partyAggregates,
+  partyMeanDifference,
   sortedBins,
 } from "./aesAnalyticsUtils";
 import type { AESAnalyticsData } from "./aesTypes";
-import type { YearRange } from "./aesAnalyticsUtils";
+import type { PartyMeanDifference, YearRange } from "./aesAnalyticsUtils";
 
 type AESPartyDistributionProps = {
   readonly data: AESAnalyticsData;
@@ -23,6 +24,7 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
   const bins = sortedBins(data);
   const maxCount = maxDistributionCount(lines);
   const maxPartyCount = Math.max(1, ...aggregates.map((item) => item.n));
+  const difference = partyMeanDifference(aggregates);
 
   if (aggregates.length === 0) {
     return (
@@ -93,6 +95,7 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
         </svg>
       </div>
       <div className="space-y-3">
+        {difference && <PartyDifferenceCard difference={difference} />}
         {aggregates.map((item) => (
           <div key={item.party} className="rounded border border-slate-800 bg-slate-900/30 p-3">
             <div className="mb-2 flex items-center justify-between gap-3 text-sm">
@@ -122,6 +125,42 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function PartyDifferenceCard({
+  difference,
+}: {
+  readonly difference: PartyMeanDifference;
+}) {
+  return (
+    <div className="rounded border border-cyan-400/25 bg-cyan-400/5 p-3">
+      <div className="text-xs uppercase tracking-widest text-slate-500">
+        D/R mean difference
+      </div>
+      <div className="mt-2 flex items-baseline justify-between gap-3">
+        <span className="text-sm text-slate-400">R minus D</span>
+        <span className="font-mono text-lg font-semibold text-cyan-200">
+          {signed(difference.republicanMinusDemocratic)}
+        </span>
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500">
+        <div>
+          <div className="text-slate-400">Democratic mean</div>
+          <div>
+            {signed(difference.democraticMean)} · N=
+            {difference.democraticN.toLocaleString()}
+          </div>
+        </div>
+        <div>
+          <div className="text-slate-400">Republican mean</div>
+          <div>
+            {signed(difference.republicanMean)} · N=
+            {difference.republicanN.toLocaleString()}
+          </div>
+        </div>
       </div>
     </div>
   );

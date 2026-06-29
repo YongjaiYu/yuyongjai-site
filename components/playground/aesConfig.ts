@@ -36,6 +36,8 @@ export const ANALYTICS_TABS: readonly AnalyticsTab[] = [
   "presidents",
   "nominate",
 ];
+export const LINCOLN_START_YEAR = 1861;
+export const TRUMAN_START_YEAR = 1945;
 
 export function parseFilterType(value: string): FilterType {
   switch (value) {

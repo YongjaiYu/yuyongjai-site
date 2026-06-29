@@ -1,26 +1,24 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ANALYTICS_TABS, assertNever } from "./aesConfig";
-import { clampYear } from "./aesAnalyticsUtils";
+import {
+  ANALYTICS_TABS,
+  TRUMAN_START_YEAR,
+  assertNever,
+} from "./aesConfig";
+import { defaultStartYear, parseYear } from "./aesAnalyticsUtils";
 import { AESNominatePanel } from "./AESNominatePanel";
 import { AESPartyDistribution } from "./AESPartyDistribution";
 import { AESPresidentMeans } from "./AESPresidentMeans";
+import { AESYearRangeControls } from "./AESYearRangeControls";
 import type { AESAnalyticsData, AnalyticsTab } from "./aesTypes";
-
-type YearParseConfig = {
-  readonly value: string;
-  readonly fallback: number;
-  readonly minYear: number;
-  readonly maxYear: number;
-};
 
 export function AESAnalytics() {
   const [data, setData] = useState<AESAnalyticsData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<AnalyticsTab>("party");
-  const [fromYear, setFromYear] = useState(1789);
-  const [toYear, setToYear] = useState(2026);
+  const [fromYear, setFromYear] = useState(String(TRUMAN_START_YEAR));
+  const [toYear, setToYear] = useState("2026");
 
   useEffect(() => {
     fetch("/data/aes_analytics.json")
@@ -30,8 +28,8 @@ export function AESAnalytics() {
         }
         const payload: AESAnalyticsData = await response.json();
         setData(payload);
-        setFromYear(payload.meta.year_range[0]);
-        setToYear(payload.meta.year_range[1]);
+        setFromYear(String(defaultStartYear(payload)));
+        setToYear(String(payload.meta.year_range[1]));
       })
       .catch((fetchError) => {
         if (fetchError instanceof Error) {
@@ -44,11 +42,36 @@ export function AESAnalytics() {
 
   const yearRange = useMemo(() => {
     if (!data) {
-      return { from: fromYear, to: toYear };
+      return {
+        from: parseYear({
+          value: fromYear,
+          fallback: TRUMAN_START_YEAR,
+          minYear: TRUMAN_START_YEAR,
+          maxYear: TRUMAN_START_YEAR,
+        }),
+        to: parseYear({
+          value: toYear,
+          fallback: TRUMAN_START_YEAR,
+          minYear: TRUMAN_START_YEAR,
+          maxYear: TRUMAN_START_YEAR,
+        }),
+      };
     }
     const [minYear, maxYear] = data.meta.year_range;
-    const from = clampYear(Math.min(fromYear, toYear), minYear, maxYear);
-    const to = clampYear(Math.max(fromYear, toYear), minYear, maxYear);
+    const parsedFrom = parseYear({
+      value: fromYear,
+      fallback: defaultStartYear(data),
+      minYear,
+      maxYear,
+    });
+    const parsedTo = parseYear({
+      value: toYear,
+      fallback: maxYear,
+      minYear,
+      maxYear,
+    });
+    const from = Math.min(parsedFrom, parsedTo);
+    const to = Math.max(parsedFrom, parsedTo);
     return { from, to };
   }, [data, fromYear, toYear]);
 
@@ -68,18 +91,15 @@ export function AESAnalytics() {
     );
   }
 
-  const [minYear, maxYear] = data.meta.year_range;
-
   return (
     <section className="rounded border border-slate-800 bg-slate-950/40 p-5 font-sans">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold text-slate-100">
-            Party Distribution
+            {tabTitle(activeTab)}
           </h2>
           <p className="mt-1 max-w-2xl text-sm leading-relaxed text-slate-500">
-            Compare score distributions by party, then switch to presidential
-            means or the Truman-onward NOMINATE validation.
+            {tabDescription(activeTab)}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -100,80 +120,24 @@ export function AESAnalytics() {
         </div>
       </div>
       {activeTab === "party" && (
-        <div className="mb-5 flex flex-wrap items-end gap-3">
-          <YearInput
-            label="From"
-            value={fromYear}
-            minYear={minYear}
-            maxYear={maxYear}
-            onChange={setFromYear}
-          />
-          <YearInput
-            label="To"
-            value={toYear}
-            minYear={minYear}
-            maxYear={maxYear}
-            onChange={setToYear}
-          />
-          <div className="pb-1 text-xs text-slate-500">
-            Showing {yearRange.from}-{yearRange.to}
-          </div>
-        </div>
+        <AESYearRangeControls
+          data={data}
+          fromYear={fromYear}
+          toYear={toYear}
+          range={yearRange}
+          setFromYear={setFromYear}
+          setToYear={setToYear}
+        />
       )}
       {activeTab === "party" && (
         <AESPartyDistribution data={data} range={yearRange} />
       )}
-      {activeTab === "presidents" && <AESPresidentMeans data={data} />}
+      {activeTab === "presidents" && (
+        <AESPresidentMeans data={data} startYear={defaultStartYear(data)} />
+      )}
       {activeTab === "nominate" && <AESNominatePanel data={data} />}
     </section>
   );
-}
-
-function YearInput({
-  label,
-  value,
-  minYear,
-  maxYear,
-  onChange,
-}: {
-  readonly label: string;
-  readonly value: number;
-  readonly minYear: number;
-  readonly maxYear: number;
-  readonly onChange: (value: number) => void;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-1 block text-xs uppercase tracking-widest text-slate-500">
-        {label}
-      </span>
-      <input
-        type="number"
-        min={minYear}
-        max={maxYear}
-        value={value}
-        onChange={(event) =>
-          onChange(
-            parseYear({
-              value: event.target.value,
-              fallback: value,
-              minYear,
-              maxYear,
-            }),
-          )
-        }
-        className="w-28 rounded border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-400 focus:outline-none"
-      />
-    </label>
-  );
-}
-
-function parseYear(config: YearParseConfig): number {
-  const parsed = Number.parseInt(config.value, 10);
-  if (Number.isNaN(parsed)) {
-    return config.fallback;
-  }
-  return clampYear(parsed, config.minYear, config.maxYear);
 }
 
 function tabLabel(tab: AnalyticsTab): string {
@@ -184,6 +148,32 @@ function tabLabel(tab: AnalyticsTab): string {
       return "President means";
     case "nominate":
       return "NOMINATE";
+    default:
+      return assertNever(tab);
+  }
+}
+
+function tabTitle(tab: AnalyticsTab): string {
+  switch (tab) {
+    case "party":
+      return "Party Distribution";
+    case "presidents":
+      return "President Means";
+    case "nominate":
+      return "NOMINATE Validation";
+    default:
+      return assertNever(tab);
+  }
+}
+
+function tabDescription(tab: AnalyticsTab): string {
+  switch (tab) {
+    case "party":
+      return "Compare score distributions and party means for the selected period.";
+    case "presidents":
+      return "Compare directive-level presidential means from Truman onward.";
+    case "nominate":
+      return "Compare Truman-onward AES means with presidential NOMINATE scores.";
     default:
       return assertNever(tab);
   }

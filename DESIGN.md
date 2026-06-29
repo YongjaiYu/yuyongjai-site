@@ -55,6 +55,18 @@ Base unit is 4px. Controls use 4-16px gaps, panels use 24px section spacing, and
 - States: loading, empty, populated.
 - Accessibility: text summaries accompany visual encodings.
 
+### Analytical Range Input
+
+- Structure: paired year fields with compact preset buttons.
+- States: editable, blur-normalized, preset-selected by resulting value.
+- Accessibility: native numeric inputs with visible labels.
+
+### Difference Summary
+
+- Structure: compact bordered stat card above supporting party rows.
+- States: hidden when Democratic or Republican observations are unavailable.
+- Accessibility: label states the comparison direction in text, not color alone.
+
 ## 6. Motion & Interaction
 
 Micro-interactions use 75-150ms color or opacity transitions only. Charts do not animate layout. Hover states expose detail without moving surrounding content.
