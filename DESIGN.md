@@ -67,11 +67,35 @@ Base unit is 4px. Controls use 4-16px gaps, panels use 24px section spacing, and
 - States: hidden when Democratic or Republican observations are unavailable.
 - Accessibility: label states the comparison direction in text, not color alone.
 
+### Party Gap Evidence
+
+- Structure: stacked rows for all, ideological, and non-ideological D/R tests.
+- States: available when validation gap rows exist; omitted when unavailable.
+- Accessibility: reports difference, effect size, p-value, and sample size as text.
+
+### Distribution Mode Toggle
+
+- Structure: compact segmented control inside the distribution chart panel.
+- States: count and density, each preserving party colors and line ordering.
+- Accessibility: mode labels are text buttons, not color-only controls.
+
+### Paired Mean Track
+
+- Structure: per-president horizontal track with overall mean plus ideological and non-ideological markers.
+- States: paired markers shown only when both subgroup means exist.
+- Accessibility: numeric subgroup values remain visible below each track.
+
 ### Interactive Scatter Inspector
 
 - Structure: clickable SVG marks paired with a right-side metric inspector.
 - States: default, hovered, keyboard-focused, selected, empty data.
 - Accessibility: SVG marks expose role, tab focus, and text labels for selected values.
+
+### Sample Fit Matrix
+
+- Structure: compact comparison rows for all, ideological, and non-ideological NOMINATE residuals.
+- States: current sample highlighted; missing sample rows report n/a.
+- Accessibility: each row repeats mean, residual, and N as text.
 
 ## 6. Motion & Interaction
 

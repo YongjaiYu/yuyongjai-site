@@ -1,4 +1,4 @@
-import { partyColor } from "./aesConfig";
+import { IDEOLOGY_COLORS, formatScore, partyColor } from "./aesConfig";
 import type { AESAnalyticsData, PresidentMean } from "./aesTypes";
 
 type AESPresidentMeansProps = {
@@ -16,6 +16,7 @@ export function AESPresidentMeans({ data, startYear }: AESPresidentMeansProps) {
   const conservative = presidents[presidents.length - 1];
   const gap =
     liberal && conservative ? conservative.mean_all - liberal.mean_all : 0;
+  const subgroupGap = largestIdeologyGap(presidents);
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px]">
@@ -41,21 +42,29 @@ export function AESPresidentMeans({ data, startYear }: AESPresidentMeansProps) {
             <div>
               <div className="text-xs text-slate-500">Most liberal mean</div>
               <div className="text-slate-200">
-                {liberal.short} ({signed(liberal.mean_all)})
+                {liberal.short} ({formatScore(liberal.mean_all)})
               </div>
             </div>
             <div>
               <div className="text-xs text-slate-500">Most conservative mean</div>
               <div className="text-slate-200">
-                {conservative.short} ({signed(conservative.mean_all)})
+                {conservative.short} ({formatScore(conservative.mean_all)})
               </div>
             </div>
           </div>
         )}
+        {subgroupGap && (
+          <div className="mt-4 border-t border-slate-800 pt-4 text-sm text-slate-400">
+            <div className="text-xs text-slate-500">Largest subgroup gap</div>
+            <div className="mt-1 text-slate-200">
+              {subgroupGap.short} (
+              {formatScore(subgroupGap.difference_ideological_minus_non ?? 0)})
+            </div>
+          </div>
+        )}
         <div className="mt-4 text-xs leading-relaxed text-slate-500">
-          Bars show each president&apos;s directive-level mean AES over the strict
-          corpus. Ideological and non-ideological means are listed when both
-          groups exist.
+          The track shows each president&apos;s overall mean, with paired
+          ideological and non-ideological means when both groups exist.
         </div>
         <div className="mt-3 text-xs leading-relaxed text-slate-500">
           Displayed sample starts in {startYear}, so this panel begins with
@@ -75,8 +84,17 @@ function PresidentMeanRow({
   readonly minMean: number;
   readonly maxMean: number;
 }) {
-  const position = ((president.mean_all - minMean) / (maxMean - minMean || 1)) * 100;
-
+  const allPosition = scorePosition(president.mean_all, minMean, maxMean);
+  const ideologicalPosition = nullablePosition(
+    president.mean_ideological,
+    minMean,
+    maxMean,
+  );
+  const nonIdeologicalPosition = nullablePosition(
+    president.mean_non_ideological,
+    minMean,
+    maxMean,
+  );
   return (
     <div className="rounded border border-slate-800 bg-slate-900/30 px-3 py-2">
       <div className="flex items-center justify-between gap-3 text-xs">
@@ -90,13 +108,40 @@ function PresidentMeanRow({
             {president.start_year}-{president.end_year}
           </span>
         </span>
-        <span className="font-mono text-slate-200">{signed(president.mean_all)}</span>
+        <span className="font-mono text-slate-200">
+          {formatScore(president.mean_all)}
+        </span>
       </div>
-      <div className="relative mt-2 h-2 rounded-full bg-slate-800">
+      <div className="relative mt-2 h-7 rounded bg-slate-950/35">
+        <span className="absolute left-0 right-0 top-1/2 h-px bg-slate-800" />
+        {ideologicalPosition !== null && nonIdeologicalPosition !== null && (
+          <span
+            className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-slate-700"
+            style={{
+              left: `${Math.min(ideologicalPosition, nonIdeologicalPosition)}%`,
+              width: `${Math.abs(ideologicalPosition - nonIdeologicalPosition)}%`,
+            }}
+          />
+        )}
+        {nonIdeologicalPosition !== null && (
+          <ScoreMarker
+            label="Non-ideological mean"
+            position={nonIdeologicalPosition}
+            color={IDEOLOGY_COLORS.non_ideological}
+          />
+        )}
+        {ideologicalPosition !== null && (
+          <ScoreMarker
+            label="Ideological mean"
+            position={ideologicalPosition}
+            color={IDEOLOGY_COLORS.ideological}
+          />
+        )}
         <span
-          className="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border border-slate-950"
+          aria-label="Overall mean"
+          className="absolute top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full border border-slate-950"
           style={{
-            left: `calc(${position}% - 6px)`,
+            left: `calc(${allPosition}% - 7px)`,
             backgroundColor: partyColor(president.party),
           }}
         />
@@ -105,15 +150,63 @@ function PresidentMeanRow({
         <span>N={president.n.toLocaleString()}</span>
         <span>ideo {nullableScore(president.mean_ideological)}</span>
         <span>non-ideo {nullableScore(president.mean_non_ideological)}</span>
+        <span>gap {nullableScore(president.difference_ideological_minus_non)}</span>
       </div>
     </div>
   );
 }
 
-function signed(value: number): string {
-  return `${value > 0 ? "+" : ""}${value.toFixed(3)}`;
+function ScoreMarker({
+  label,
+  position,
+  color,
+}: {
+  readonly label: string;
+  readonly position: number;
+  readonly color: string;
+}) {
+  return (
+    <span
+      aria-label={label}
+      className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full border border-slate-950"
+      style={{
+        left: `calc(${position}% - 5px)`,
+        backgroundColor: color,
+      }}
+    />
+  );
+}
+
+function scorePosition(value: number, minMean: number, maxMean: number): number {
+  return ((value - minMean) / (maxMean - minMean || 1)) * 100;
+}
+
+function nullablePosition(
+  value: number | null,
+  minMean: number,
+  maxMean: number,
+): number | null {
+  return value === null ? null : scorePosition(value, minMean, maxMean);
+}
+
+function largestIdeologyGap(
+  presidents: readonly PresidentMean[],
+): PresidentMean | null {
+  let largest: PresidentMean | null = null;
+  let largestMagnitude = -1;
+  for (const president of presidents) {
+    if (president.difference_ideological_minus_non === null) {
+      continue;
+    }
+    const magnitude = Math.abs(president.difference_ideological_minus_non);
+    if (magnitude > largestMagnitude) {
+      largest = president;
+      largestMagnitude = magnitude;
+    }
+  }
+  return largest;
 }
 
 function nullableScore(value: number | null): string {
-  return value === null ? "n/a" : signed(value);
+  return value === null ? "n/a" : formatScore(value);
 }

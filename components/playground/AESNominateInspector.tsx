@@ -1,10 +1,12 @@
 import { partyColor } from "./aesConfig";
 import type { NominateMetric } from "./aesTypes";
-import type { NominateFitRow } from "./aesAnalyticsUtils";
+import type { NominateFitRow, NominateSampleFit } from "./aesAnalyticsUtils";
 
 type AESNominateInspectorProps = {
   readonly metric: NominateMetric | null;
   readonly activeRow: NominateFitRow | null;
+  readonly sample: string;
+  readonly sampleFits: readonly NominateSampleFit[];
   readonly rows: readonly NominateFitRow[];
   readonly onSelect: (shortName: string) => void;
 };
@@ -12,6 +14,8 @@ type AESNominateInspectorProps = {
 export function AESNominateInspector({
   metric,
   activeRow,
+  sample,
+  sampleFits,
   rows,
   onSelect,
 }: AESNominateInspectorProps) {
@@ -42,6 +46,22 @@ export function AESNominateInspector({
           </div>
         )}
       </div>
+      {sampleFits.length > 0 && (
+        <div className="mt-4 border-t border-slate-800 pt-4">
+          <div className="mb-2 text-xs uppercase tracking-widest text-slate-500">
+            Sample comparison
+          </div>
+          <div className="space-y-1.5">
+            {sampleFits.map((fit) => (
+              <SampleFitRow
+                key={fit.sample}
+                fit={fit}
+                active={fit.sample === sample}
+              />
+            ))}
+          </div>
+        </div>
+      )}
       <div className="mt-4 border-t border-slate-800 pt-4">
         <div className="mb-2 text-xs uppercase tracking-widest text-slate-500">
           Largest residuals
@@ -80,6 +100,37 @@ export function AESNominateInspector({
         Click or hover a point to compare its observed AES mean against the
         weighted regression line. Residuals above zero are more conservative on
         AES than NOMINATE predicts.
+      </div>
+    </div>
+  );
+}
+
+function SampleFitRow({
+  fit,
+  active,
+}: {
+  readonly fit: NominateSampleFit;
+  readonly active: boolean;
+}) {
+  const row = fit.row;
+  const residual = row === null ? null : row.residual;
+  return (
+    <div
+      className={`rounded border px-2.5 py-2 text-xs ${
+        active
+          ? "border-cyan-400/40 bg-cyan-400/10"
+          : "border-slate-800 bg-slate-950/35"
+      }`}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <span className="font-medium text-slate-300">{shortSample(fit.sample)}</span>
+        <span className="font-mono text-slate-200">
+          {residual === null ? "n/a" : signed(residual)}
+        </span>
+      </div>
+      <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500">
+        <span>mean {row ? signed(row.point.mean_aes) : "n/a"}</span>
+        <span>N={row ? row.point.n.toLocaleString() : "n/a"}</span>
       </div>
     </div>
   );
@@ -148,4 +199,17 @@ function FitMetric({
 
 function signed(value: number): string {
   return `${value > 0 ? "+" : ""}${value.toFixed(3)}`;
+}
+
+function shortSample(sample: string): string {
+  switch (sample) {
+    case "All directives":
+      return "All";
+    case "Ideological directives":
+      return "Ideological";
+    case "Non-ideological directives":
+      return "Non-ideological";
+    default:
+      return sample;
+  }
 }

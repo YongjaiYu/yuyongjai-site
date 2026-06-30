@@ -31,8 +31,11 @@ export function AESNominateScatter({
     rows.find((row) => row.point.short === activeShort) ?? rows[0] ?? null;
 
   return (
-    <div className="overflow-x-auto rounded border border-slate-800 bg-slate-900/30 p-4">
-      <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="w-full min-w-[620px]">
+    <div className="max-w-full overflow-x-auto rounded border border-slate-800 bg-slate-900/30 p-4">
+      <svg
+        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        className="block w-full min-w-[620px]"
+      >
         {yTicks(bounds).map((tick) => (
           <line
             key={tick}

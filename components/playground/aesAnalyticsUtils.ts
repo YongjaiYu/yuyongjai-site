@@ -46,11 +46,18 @@ export type DistributionPoint = {
   readonly count: number;
 };
 
+export type DistributionMode = "count" | "density";
+
 export type NominateFitRow = {
   readonly point: NominatePoint;
   readonly predicted: number | null;
   readonly residual: number | null;
   readonly absResidual: number | null;
+};
+
+export type NominateSampleFit = {
+  readonly sample: string;
+  readonly row: NominateFitRow | null;
 };
 
 export function clampYear(value: number, minYear: number, maxYear: number): number {
@@ -156,6 +163,29 @@ export function maxDistributionCount(lines: readonly DistributionLine[]): number
   );
 }
 
+export function maxDistributionValue(
+  lines: readonly DistributionLine[],
+  mode: DistributionMode,
+): number {
+  return Math.max(
+    1,
+    ...lines.flatMap((line) =>
+      line.points.map((point) => distributionPointValue(line, point, mode)),
+    ),
+  );
+}
+
+export function distributionPointValue(
+  line: DistributionLine,
+  point: DistributionPoint,
+  mode: DistributionMode,
+): number {
+  if (mode === "density") {
+    return line.n === 0 ? 0 : (point.count / line.n) * 100;
+  }
+  return point.count;
+}
+
 export function nominateSamples(data: AESAnalyticsData): readonly string[] {
   return Array.from(new Set(data.nominate_points.map((point) => point.sample)));
 }
@@ -200,6 +230,21 @@ export function nominateFitRows(
       };
     })
     .sort(compareNominateFitRows);
+}
+
+export function nominateSampleFits(
+  data: AESAnalyticsData,
+  samples: readonly string[],
+  shortName: string,
+): readonly NominateSampleFit[] {
+  return samples.map((sample) => {
+    const metric = nominateMetricForSample(data, sample);
+    const row =
+      nominateFitRows(nominatePointsForSample(data, sample), metric).find(
+        (fitRow) => fitRow.point.short === shortName,
+      ) ?? null;
+    return { sample, row };
+  });
 }
 
 function compareNominateFitRows(

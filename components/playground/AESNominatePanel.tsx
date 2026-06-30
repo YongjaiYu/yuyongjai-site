@@ -7,6 +7,7 @@ import {
   nominateFitRows,
   nominateMetricForSample,
   nominatePointsForSample,
+  nominateSampleFits,
   nominateSamples,
 } from "./aesAnalyticsUtils";
 import type { AESAnalyticsData } from "./aesTypes";
@@ -30,6 +31,13 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
   const rows = useMemo(() => nominateFitRows(points, metric), [points, metric]);
   const activeRow =
     rows.find((row) => row.point.short === selectedShort) ?? rows[0] ?? null;
+  const sampleFits = useMemo(
+    () =>
+      activeRow
+        ? nominateSampleFits(data, samples, activeRow.point.short)
+        : [],
+    [activeRow, data, samples],
+  );
 
   if (points.length === 0) {
     return (
@@ -40,8 +48,8 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
-      <div className="space-y-4">
+    <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="min-w-0 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             {samples.map((name) => (
@@ -76,6 +84,8 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
       <AESNominateInspector
         metric={metric}
         activeRow={activeRow}
+        sample={sample}
+        sampleFits={sampleFits}
         rows={rows}
         onSelect={setSelectedShort}
       />

@@ -92,7 +92,7 @@ export function AESAnalytics() {
   }
 
   return (
-    <section className="rounded border border-slate-800 bg-slate-950/40 p-5 font-sans">
+    <section className="overflow-hidden rounded border border-slate-800 bg-slate-950/40 p-5 font-sans">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold text-slate-100">

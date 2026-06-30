@@ -1,13 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { partyColor } from "./aesConfig";
+import { AESPartyGapSummary } from "./AESPartyGapSummary";
 import {
+  distributionPointValue,
   distributionLines,
-  maxDistributionCount,
+  maxDistributionValue,
   partyAggregates,
   partyMeanDifference,
   sortedBins,
 } from "./aesAnalyticsUtils";
 import type { AESAnalyticsData } from "./aesTypes";
-import type { PartyMeanDifference, YearRange } from "./aesAnalyticsUtils";
+import type {
+  DistributionMode,
+  PartyMeanDifference,
+  YearRange,
+} from "./aesAnalyticsUtils";
 
 type AESPartyDistributionProps = {
   readonly data: AESAnalyticsData;
@@ -17,12 +26,14 @@ type AESPartyDistributionProps = {
 const WIDTH = 880;
 const HEIGHT = 260;
 const MARGIN = { top: 22, right: 26, bottom: 38, left: 52 };
+const DISTRIBUTION_MODES: readonly DistributionMode[] = ["count", "density"];
 
 export function AESPartyDistribution({ data, range }: AESPartyDistributionProps) {
+  const [mode, setMode] = useState<DistributionMode>("count");
   const aggregates = partyAggregates(data, range);
   const lines = distributionLines(data, range);
   const bins = sortedBins(data);
-  const maxCount = maxDistributionCount(lines);
+  const maxValue = maxDistributionValue(lines, mode);
   const maxPartyCount = Math.max(1, ...aggregates.map((item) => item.n));
   const difference = partyMeanDifference(aggregates);
 
@@ -36,66 +47,99 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,0.75fr)]">
-      <div className="overflow-x-auto rounded border border-slate-800 bg-slate-900/30 p-4">
-        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="w-full min-w-[620px]">
-          {yTicks(maxCount).map((tick) => (
-            <line
-              key={tick}
-              x1={MARGIN.left}
-              x2={WIDTH - MARGIN.right}
-              y1={yScale(tick, maxCount)}
-              y2={yScale(tick, maxCount)}
-              stroke="#1e293b"
-              strokeWidth={0.7}
-              strokeDasharray="4,4"
-            />
-          ))}
-          {lines.map((line) => (
-            <polyline
-              key={line.party}
-              fill="none"
-              stroke={partyColor(line.party)}
-              strokeWidth={line.party === "Democratic" || line.party === "Republican" ? 2.4 : 1.5}
-              strokeOpacity={line.party === "Democratic" || line.party === "Republican" ? 0.95 : 0.58}
-              points={line.points
-                .map((point) => `${xScale(point.bin, bins)},${yScale(point.count, maxCount)}`)
-                .join(" ")}
-            />
-          ))}
-          {scoreTicks(bins).map((bin) => (
-            <text
-              key={bin}
-              x={xScale(bin, bins)}
-              y={HEIGHT - 12}
-              textAnchor="middle"
-              className="fill-slate-500 text-[10px]"
-            >
-              {bin.toFixed(1)}
-            </text>
-          ))}
-          {yTicks(maxCount).map((tick) => (
-            <text
-              key={`label-${tick}`}
-              x={MARGIN.left - 8}
-              y={yScale(tick, maxCount) + 4}
-              textAnchor="end"
-              className="fill-slate-500 text-[10px]"
-            >
-              {tick.toLocaleString()}
-            </text>
-          ))}
-          <text
-            x={WIDTH / 2}
-            y={HEIGHT - 2}
-            textAnchor="middle"
-            className="fill-slate-400 text-xs"
+      <div className="min-w-0 rounded border border-slate-800 bg-slate-900/30 p-4">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="text-xs uppercase tracking-widest text-slate-500">
+            Distribution
+          </div>
+          <div className="flex gap-1">
+            {DISTRIBUTION_MODES.map((item) => (
+              <button
+                key={item}
+                type="button"
+                aria-pressed={mode === item}
+                onClick={() => setMode(item)}
+                className={`rounded px-2.5 py-1 text-xs font-medium capitalize transition-colors ${
+                  mode === item
+                    ? "bg-cyan-400/20 text-cyan-300"
+                    : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="max-w-full overflow-x-auto">
+          <svg
+            viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+            className="block w-full min-w-[620px]"
           >
-            AES score bins
-          </text>
-        </svg>
+            {yTicks(maxValue, mode).map((tick) => (
+              <line
+                key={tick}
+                x1={MARGIN.left}
+                x2={WIDTH - MARGIN.right}
+                y1={yScale(tick, maxValue)}
+                y2={yScale(tick, maxValue)}
+                stroke="#1e293b"
+                strokeWidth={0.7}
+                strokeDasharray="4,4"
+              />
+            ))}
+            {lines.map((line) => (
+              <polyline
+                key={line.party}
+                fill="none"
+                stroke={partyColor(line.party)}
+                strokeWidth={isMajorParty(line.party) ? 2.4 : 1.5}
+                strokeOpacity={isMajorParty(line.party) ? 0.95 : 0.58}
+                points={line.points
+                  .map((point) =>
+                    `${xScale(point.bin, bins)},${yScale(
+                      distributionPointValue(line, point, mode),
+                      maxValue,
+                    )}`,
+                  )
+                  .join(" ")}
+              />
+            ))}
+            {scoreTicks(bins).map((bin) => (
+              <text
+                key={bin}
+                x={xScale(bin, bins)}
+                y={HEIGHT - 12}
+                textAnchor="middle"
+                className="fill-slate-500 text-[10px]"
+              >
+                {bin.toFixed(1)}
+              </text>
+            ))}
+            {yTicks(maxValue, mode).map((tick) => (
+              <text
+                key={`label-${tick}`}
+                x={MARGIN.left - 8}
+                y={yScale(tick, maxValue) + 4}
+                textAnchor="end"
+                className="fill-slate-500 text-[10px]"
+              >
+                {formatAxisTick(tick, mode)}
+              </text>
+            ))}
+            <text
+              x={WIDTH / 2}
+              y={HEIGHT - 2}
+              textAnchor="middle"
+              className="fill-slate-400 text-xs"
+            >
+              AES score bins
+            </text>
+          </svg>
+        </div>
       </div>
       <div className="space-y-3">
         {difference && <PartyDifferenceCard difference={difference} />}
+        <AESPartyGapSummary gaps={data.party_gaps} />
         {aggregates.map((item) => (
           <div key={item.party} className="rounded border border-slate-800 bg-slate-900/30 p-3">
             <div className="mb-2 flex items-center justify-between gap-3 text-sm">
@@ -178,10 +222,13 @@ function yScale(count: number, maxCount: number): number {
   return MARGIN.top + (1 - count / maxCount) * innerH;
 }
 
-function yTicks(maxCount: number): readonly number[] {
-  const step = Math.max(1, Math.ceil(maxCount / 4 / 10) * 10);
+function yTicks(maxValue: number, mode: DistributionMode): readonly number[] {
+  const step =
+    mode === "density"
+      ? Math.max(5, Math.ceil(maxValue / 4 / 5) * 5)
+      : Math.max(1, Math.ceil(maxValue / 4 / 10) * 10);
   return [0, step, step * 2, step * 3, step * 4].filter(
-    (tick) => tick <= maxCount,
+    (tick) => tick <= maxValue,
   );
 }
 
@@ -191,6 +238,17 @@ function scoreTicks(bins: readonly number[]): readonly number[] {
 
 function signed(value: number): string {
   return `${value > 0 ? "+" : ""}${value.toFixed(3)}`;
+}
+
+function isMajorParty(party: string): boolean {
+  return party === "Democratic" || party === "Republican";
+}
+
+function formatAxisTick(value: number, mode: DistributionMode): string {
+  if (mode === "density") {
+    return `${Math.round(value)}%`;
+  }
+  return value.toLocaleString();
 }
 
 function ideologyShare(item: { readonly ideological: number; readonly n: number }): string {

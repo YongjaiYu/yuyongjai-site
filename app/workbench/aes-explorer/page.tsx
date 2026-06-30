@@ -42,7 +42,7 @@ const NAV_ITEMS = [
 
 export default function AESExplorerPage() {
   return (
-    <main className="min-h-screen bg-slate-950 px-4 py-12 sm:px-8 lg:px-16">
+    <main className="min-h-screen overflow-x-hidden bg-slate-950 px-4 py-12 sm:px-8 lg:px-16">
       <nav className="fixed left-0 top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-6 sm:px-8 lg:px-16">
           <a
