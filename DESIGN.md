@@ -67,6 +67,12 @@ Base unit is 4px. Controls use 4-16px gaps, panels use 24px section spacing, and
 - States: hidden when Democratic or Republican observations are unavailable.
 - Accessibility: label states the comparison direction in text, not color alone.
 
+### Interactive Scatter Inspector
+
+- Structure: clickable SVG marks paired with a right-side metric inspector.
+- States: default, hovered, keyboard-focused, selected, empty data.
+- Accessibility: SVG marks expose role, tab focus, and text labels for selected values.
+
 ## 6. Motion & Interaction
 
 Micro-interactions use 75-150ms color or opacity transitions only. Charts do not animate layout. Hover states expose detail without moving surrounding content.

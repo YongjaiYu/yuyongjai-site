@@ -46,6 +46,13 @@ export type DistributionPoint = {
   readonly count: number;
 };
 
+export type NominateFitRow = {
+  readonly point: NominatePoint;
+  readonly predicted: number | null;
+  readonly residual: number | null;
+  readonly absResidual: number | null;
+};
+
 export function clampYear(value: number, minYear: number, maxYear: number): number {
   return Math.min(maxYear, Math.max(minYear, value));
 }
@@ -165,6 +172,44 @@ export function nominateMetricForSample(
   sample: string,
 ): NominateMetric | null {
   return data.nominate_metrics.find((metric) => metric.sample === sample) ?? null;
+}
+
+export function nominateFitRows(
+  points: readonly NominatePoint[],
+  metric: NominateMetric | null,
+): readonly NominateFitRow[] {
+  return points
+    .map((point) => {
+      if (!metric) {
+        return {
+          point,
+          predicted: null,
+          residual: null,
+          absResidual: null,
+        };
+      }
+      const predicted =
+        metric.weighted_intercept_by_directives +
+        metric.weighted_slope_by_directives * point.nominate;
+      const residual = point.mean_aes - predicted;
+      return {
+        point,
+        predicted,
+        residual,
+        absResidual: Math.abs(residual),
+      };
+    })
+    .sort(compareNominateFitRows);
+}
+
+function compareNominateFitRows(
+  left: NominateFitRow,
+  right: NominateFitRow,
+): number {
+  if (left.absResidual === null || right.absResidual === null) {
+    return right.point.n - left.point.n;
+  }
+  return right.absResidual - left.absResidual;
 }
 
 function isInRange(stat: PartyYearStat, range: YearRange): boolean {
