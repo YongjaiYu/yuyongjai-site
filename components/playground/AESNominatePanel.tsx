@@ -56,6 +56,7 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
               <button
                 key={name}
                 type="button"
+                aria-pressed={sample === name}
                 onClick={() => setSample(name)}
                 className={`rounded px-3 py-1.5 text-xs font-medium transition-colors ${
                   sample === name
