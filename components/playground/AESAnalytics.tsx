@@ -7,6 +7,7 @@ import {
   assertNever,
 } from "./aesConfig";
 import { defaultStartYear, parseYear } from "./aesAnalyticsUtils";
+import { AESCongressComparisons } from "./AESCongressComparisons";
 import { AESNominatePanel } from "./AESNominatePanel";
 import { AESPartyDistribution } from "./AESPartyDistribution";
 import { AESPresidentMeans } from "./AESPresidentMeans";
@@ -135,6 +136,9 @@ export function AESAnalytics() {
       {activeTab === "presidents" && (
         <AESPresidentMeans data={data} startYear={defaultStartYear(data)} />
       )}
+      {activeTab === "congress" && (
+        <AESCongressComparisons data={data} startYear={defaultStartYear(data)} />
+      )}
       {activeTab === "nominate" && <AESNominatePanel data={data} />}
     </section>
   );
@@ -146,6 +150,8 @@ function tabLabel(tab: AnalyticsTab): string {
       return "Party distribution";
     case "presidents":
       return "President means";
+    case "congress":
+      return "Congress medians";
     case "nominate":
       return "NOMINATE";
     default:
@@ -159,6 +165,8 @@ function tabTitle(tab: AnalyticsTab): string {
       return "Party Distribution";
     case "presidents":
       return "President Means";
+    case "congress":
+      return "Congress Median Comparison";
     case "nominate":
       return "NOMINATE Validation";
     default:
@@ -171,7 +179,9 @@ function tabDescription(tab: AnalyticsTab): string {
     case "party":
       return "Compare score distributions and party means for the selected period.";
     case "presidents":
-      return "Compare directive-level presidential means from Truman onward.";
+      return "Compare directive-level presidential mean AES scores from Truman onward.";
+    case "congress":
+      return "Compare Congress median NOMINATE scores with presidential AES by Congress.";
     case "nominate":
       return "Compare Truman-onward AES means with presidential NOMINATE scores.";
     default:

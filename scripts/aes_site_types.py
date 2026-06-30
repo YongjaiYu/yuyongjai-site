@@ -16,6 +16,7 @@ class CanonicalRow(TypedDict):
     aes_score: float
     directive_type: str
     President: str
+    Date: str
     Year: int
     Title: str
     lee_gemini: str
@@ -97,6 +98,21 @@ class PresidentMean(TypedDict):
     difference_ideological_minus_non: float | None
 
 
+class CongressComparison(TypedDict):
+    congress: int
+    start_year: int
+    end_year: int
+    presidents: str
+    n: int
+    president_aes_mean: float
+    president_aes_median: float
+    president_nominate: float | None
+    house_median_nominate: float | None
+    senate_median_nominate: float | None
+    congress_median_nominate: float | None
+    president_gap_vs_congress_median: float | None
+
+
 class PartyGap(TypedDict):
     sample: str
     n_D: int
@@ -146,6 +162,7 @@ class AnalyticsJson(TypedDict):
     party_year_bins: list[PartyYearBin]
     party_year_stats: list[PartyYearStat]
     president_means: list[PresidentMean]
+    congress_comparisons: list[CongressComparison]
     party_gaps: list[PartyGap]
     nominate_points: list[NominatePoint]
     nominate_metrics: list[NominateMetric]

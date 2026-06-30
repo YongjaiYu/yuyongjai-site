@@ -15,7 +15,12 @@ from typing import Final
 
 import pyarrow.parquet as pq
 
-from aes_site_analytics import analytics_json, is_ideological, rounded_score
+from aes_site_analytics import (
+    AnalyticsSources,
+    analytics_json,
+    is_ideological,
+    rounded_score,
+)
 from aes_site_constants import CATEGORIES, DIRECTIVE_TYPES, PRESIDENTS
 from aes_site_types import (
     CanonicalRow,
@@ -32,6 +37,7 @@ PAPER_MAIN: Final = SITE_ROOT.parent / "01. Paper 1" / "data" / "main"
 PAPER_VALIDATION: Final = (
     SITE_ROOT.parent / "01. Paper 1" / "output" / "main" / "validation"
 )
+PAPER_EXTERNAL: Final = SITE_ROOT.parent / "01. Paper 1" / "data" / "external"
 PUBLIC_DATA: Final = SITE_ROOT / "public" / "data"
 
 
@@ -46,10 +52,15 @@ def json_name(short_name: str) -> str:
 
 def load_rows() -> list[CanonicalRow]:
     aes = pq.read_table(PAPER_MAIN / "directive_aes.parquet").to_pylist()
+    raw = pq.read_table(
+        PAPER_MAIN / "directives_raw_combined.parquet",
+        columns=["doc_id", "Date"],
+    ).to_pylist()
     cls = pq.read_table(
         PAPER_MAIN / "directives_classified.parquet",
         columns=["doc_id", "lee_gemini", "lee_gemini_ideo", "cayton_gemini_ideo"],
     ).to_pylist()
+    dates = {row["doc_id"]: row["Date"] for row in raw}
     classified = {row["doc_id"]: row for row in cls}
 
     rows: list[CanonicalRow] = []
@@ -61,6 +72,7 @@ def load_rows() -> list[CanonicalRow]:
                 "aes_score": row["aes_score"],
                 "directive_type": row["directive_type"],
                 "President": row["President"],
+                "Date": dates[row["doc_id"]],
                 "Year": row["Year"],
                 "Title": row["Title"],
                 "lee_gemini": label["lee_gemini"],
@@ -160,7 +172,11 @@ def main() -> None:
     )
     write_json(
         PUBLIC_DATA / "aes_analytics.json",
-        analytics_json(rows, meta, PAPER_VALIDATION),
+        analytics_json(
+            rows,
+            meta,
+            AnalyticsSources(validation_root=PAPER_VALIDATION, external_root=PAPER_EXTERNAL),
+        ),
     )
 
     for president in presidents_for_rows(rows):

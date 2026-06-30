@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import csv
 import math
+from dataclasses import dataclass
 from pathlib import Path
 
 from aes_site_constants import PRESIDENTS, SCORE_BIN_WIDTH
+from aes_site_congress import congress_comparisons
 from aes_site_types import (
     AnalyticsJson,
     CanonicalRow,
@@ -17,6 +19,12 @@ from aes_site_types import (
     PresidentMean,
     ScoreAccumulator,
 )
+
+
+@dataclass(frozen=True)
+class AnalyticsSources:
+    validation_root: Path
+    external_root: Path
 
 
 def rounded_score(score: float) -> float:
@@ -34,7 +42,7 @@ def is_ideological(row: CanonicalRow) -> int:
 def analytics_json(
     rows: list[CanonicalRow],
     meta: Meta,
-    validation_root: Path,
+    sources: AnalyticsSources,
 ) -> AnalyticsJson:
     return {
         "meta": {
@@ -48,9 +56,13 @@ def analytics_json(
         "party_year_bins": party_year_bins(rows),
         "party_year_stats": party_year_stats(rows),
         "president_means": president_means(rows),
-        "party_gaps": party_gaps(validation_root),
-        "nominate_points": nominate_points(validation_root),
-        "nominate_metrics": nominate_metrics(validation_root),
+        "congress_comparisons": congress_comparisons(
+            rows,
+            sources.external_root / "jcs_medians_2024.csv",
+        ),
+        "party_gaps": party_gaps(sources.validation_root),
+        "nominate_points": nominate_points(sources.validation_root),
+        "nominate_metrics": nominate_metrics(sources.validation_root),
     }
 
 

@@ -76,6 +76,21 @@ export type PresidentMean = {
   readonly difference_ideological_minus_non: number | null;
 };
 
+export type CongressComparison = {
+  readonly congress: number;
+  readonly start_year: number;
+  readonly end_year: number;
+  readonly presidents: string;
+  readonly n: number;
+  readonly president_aes_mean: number;
+  readonly president_aes_median: number;
+  readonly president_nominate: number | null;
+  readonly house_median_nominate: number | null;
+  readonly senate_median_nominate: number | null;
+  readonly congress_median_nominate: number | null;
+  readonly president_gap_vs_congress_median: number | null;
+};
+
 export type PartyGap = {
   readonly sample: string;
   readonly n_D: number;
@@ -123,9 +138,10 @@ export type AESAnalyticsData = {
   readonly party_year_bins: readonly PartyYearBin[];
   readonly party_year_stats: readonly PartyYearStat[];
   readonly president_means: readonly PresidentMean[];
+  readonly congress_comparisons: readonly CongressComparison[];
   readonly party_gaps: readonly PartyGap[];
   readonly nominate_points: readonly NominatePoint[];
   readonly nominate_metrics: readonly NominateMetric[];
 };
 
-export type AnalyticsTab = "party" | "presidents" | "nominate";
+export type AnalyticsTab = "party" | "presidents" | "congress" | "nominate";

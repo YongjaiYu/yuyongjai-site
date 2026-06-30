@@ -34,6 +34,7 @@ export const COLOR_MODES: readonly ColorMode[] = ["party", "ideology", "type"];
 export const ANALYTICS_TABS: readonly AnalyticsTab[] = [
   "party",
   "presidents",
+  "congress",
   "nominate",
 ];
 export const LINCOLN_START_YEAR = 1861;
