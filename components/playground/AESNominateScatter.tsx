@@ -7,6 +7,7 @@ type AESNominateScatterProps = {
   readonly metric: NominateMetric | null;
   readonly activeShort: string | null;
   readonly onSelect: (shortName: string) => void;
+  readonly onHover: (shortName: string | null) => void;
 };
 
 type Bounds = {
@@ -25,10 +26,11 @@ export function AESNominateScatter({
   metric,
   activeShort,
   onSelect,
+  onHover,
 }: AESNominateScatterProps) {
   const bounds = pointBounds(rows);
   const activeRow =
-    rows.find((row) => row.point.short === activeShort) ?? rows[0] ?? null;
+    rows.find((row) => row.point.short === activeShort) ?? null;
 
   return (
     <div className="max-w-full overflow-x-auto rounded border border-slate-800 bg-slate-900/30 p-4">
@@ -87,6 +89,7 @@ export function AESNominateScatter({
             bounds={bounds}
             active={row.point.short === activeRow?.point.short}
             onSelect={onSelect}
+            onHover={onHover}
           />
         ))}
         {xTicks(bounds).map((tick) => (
@@ -138,11 +141,13 @@ function NominatePointMark({
   bounds,
   active,
   onSelect,
+  onHover,
 }: {
   readonly row: NominateFitRow;
   readonly bounds: Bounds;
   readonly active: boolean;
   readonly onSelect: (shortName: string) => void;
+  readonly onHover: (shortName: string | null) => void;
 }) {
   const point = row.point;
   const cx = xScale(point.nominate, bounds);
@@ -158,7 +163,10 @@ function NominatePointMark({
       data-active={active ? "true" : "false"}
       className="cursor-pointer outline-none"
       onClick={() => onSelect(point.short)}
-      onMouseEnter={() => onSelect(point.short)}
+      onMouseEnter={() => onHover(point.short)}
+      onMouseLeave={() => onHover(null)}
+      onFocus={() => onHover(point.short)}
+      onBlur={() => onHover(null)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -184,15 +192,27 @@ function NominatePointMark({
         fill={partyColor(point.party)}
         fillOpacity={active ? 1 : 0.82}
       />
-      <text
-        x={cx + 8}
-        y={cy + 4}
-        className={active ? "fill-slate-100 text-[11px]" : "fill-slate-400 text-[10px]"}
-      >
-        {point.short}
-      </text>
+      <title>{point.short}</title>
+      {active && (
+        <text
+          x={labelX(cx, point.short)}
+          y={labelY(cy, radius)}
+          className="pointer-events-none fill-slate-100 text-[11px]"
+        >
+          {point.short}
+        </text>
+      )}
     </g>
   );
+}
+
+function labelX(cx: number, label: string): number {
+  const labelWidth = label.length * 6.5;
+  return Math.min(cx + 8, WIDTH - MARGIN.right - labelWidth);
+}
+
+function labelY(cy: number, radius: number): number {
+  return Math.max(MARGIN.top + 10, cy - radius - 8);
 }
 
 function pointBounds(rows: readonly NominateFitRow[]): Bounds {

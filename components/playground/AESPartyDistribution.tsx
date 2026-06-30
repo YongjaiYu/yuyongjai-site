@@ -40,7 +40,7 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
   if (aggregates.length === 0) {
     return (
       <div className="rounded border border-slate-800 bg-slate-900/40 p-5 text-sm text-slate-500">
-        No directives in this period.
+        No Democratic or Republican directives in this period.
       </div>
     );
   }
@@ -92,8 +92,8 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
                 key={line.party}
                 fill="none"
                 stroke={partyColor(line.party)}
-                strokeWidth={isMajorParty(line.party) ? 2.4 : 1.5}
-                strokeOpacity={isMajorParty(line.party) ? 0.95 : 0.58}
+                strokeWidth={2.4}
+                strokeOpacity={0.95}
                 points={line.points
                   .map((point) =>
                     `${xScale(point.bin, bins)},${yScale(
@@ -238,10 +238,6 @@ function scoreTicks(bins: readonly number[]): readonly number[] {
 
 function signed(value: number): string {
   return `${value > 0 ? "+" : ""}${value.toFixed(3)}`;
-}
-
-function isMajorParty(party: string): boolean {
-  return party === "Democratic" || party === "Republican";
 }
 
 function formatAxisTick(value: number, mode: DistributionMode): string {

@@ -10,6 +10,7 @@ import {
   directiveColor,
   findClosestPoint,
 } from "./aesChartUtils";
+import { MAJOR_PARTIES } from "./aesConfig";
 import { AESPointTooltip } from "./AESPointTooltip";
 import type { HoveredPoint } from "./AESPointTooltip";
 import { AESScatterLegend } from "./AESScatterLegend";
@@ -92,9 +93,6 @@ export function AESScatterPlot({
     [detailCache, filteredData, loadPresidentDetail, scales],
   );
 
-  const partyLegend = Array.from(
-    new Set(data.meta.presidents.map((president) => president.party)),
-  );
   const { margin } = CHART_DIMENSIONS;
 
   return (
@@ -195,7 +193,7 @@ export function AESScatterPlot({
       )}
       <AESScatterLegend
         colorMode={colorMode}
-        parties={partyLegend}
+        parties={MAJOR_PARTIES}
         types={data.meta.types}
       />
     </>

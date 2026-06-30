@@ -70,6 +70,8 @@ export type PresidentMean = {
   readonly start_year: number;
   readonly end_year: number;
   readonly n: number;
+  readonly n_ideological: number;
+  readonly n_non_ideological: number;
   readonly mean_all: number;
   readonly mean_ideological: number | null;
   readonly mean_non_ideological: number | null;

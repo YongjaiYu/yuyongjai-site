@@ -81,13 +81,13 @@ Base unit is 4px. Controls use 4-16px gaps, panels use 24px section spacing, and
 
 ### President Mean Track
 
-- Structure: per-president horizontal track with one party-colored mean marker.
+- Structure: per-president horizontal track with one party-colored ideological mean marker.
 - States: compact scroll list with liberal and conservative endpoints summarized.
 - Accessibility: the numeric mean is shown as text, not only by marker position.
 
-### Congress Median Comparison
+### Congress Benchmark
 
-- Structure: line chart comparing president AES, congressional median NOMINATE, and presidential NOMINATE.
+- Structure: line chart comparing president AES and congressional median NOMINATE.
 - States: selected Congress summary, recent Congress quick-select, mobile horizontal chart scroll.
 - Accessibility: chart points are keyboard-selectable and selected metrics repeat as text.
 

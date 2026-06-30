@@ -92,6 +92,8 @@ class PresidentMean(TypedDict):
     start_year: int
     end_year: int
     n: int
+    n_ideological: int
+    n_non_ideological: int
     mean_all: float
     mean_ideological: float | None
     mean_non_ideological: float | None

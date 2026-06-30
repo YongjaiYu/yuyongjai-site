@@ -5,7 +5,7 @@ import type {
   PartyYearBin,
   PartyYearStat,
 } from "./aesTypes";
-import { TRUMAN_START_YEAR } from "./aesConfig";
+import { TRUMAN_START_YEAR, majorPartyLabel } from "./aesConfig";
 
 export type YearParseConfig = {
   readonly value: string;
@@ -86,12 +86,16 @@ export function partyAggregates(
     if (!isInRange(stat, range)) {
       continue;
     }
-    const current = buckets.get(stat.party) ?? { n: 0, sum: 0, ideo: 0, non: 0 };
+    const party = majorPartyLabel(stat.party);
+    if (party === null) {
+      continue;
+    }
+    const current = buckets.get(party) ?? { n: 0, sum: 0, ideo: 0, non: 0 };
     current.n += stat.n;
     current.sum += stat.mean * stat.n;
     current.ideo += stat.ideological;
     current.non += stat.non_ideological;
-    buckets.set(stat.party, current);
+    buckets.set(party, current);
   }
   return Array.from(buckets.entries())
     .map(([party, bucket]) => ({
@@ -132,10 +136,14 @@ export function distributionLines(
     if (!isBinInRange(row, range)) {
       continue;
     }
-    const partyCounts = counts.get(row.party) ?? new Map<number, number>();
+    const party = majorPartyLabel(row.party);
+    if (party === null) {
+      continue;
+    }
+    const partyCounts = counts.get(party) ?? new Map<number, number>();
     partyCounts.set(row.b, (partyCounts.get(row.b) ?? 0) + row.n);
-    counts.set(row.party, partyCounts);
-    totals.set(row.party, (totals.get(row.party) ?? 0) + row.n);
+    counts.set(party, partyCounts);
+    totals.set(party, (totals.get(party) ?? 0) + row.n);
   }
   return Array.from(counts.entries())
     .map(([party, partyCounts]) => ({

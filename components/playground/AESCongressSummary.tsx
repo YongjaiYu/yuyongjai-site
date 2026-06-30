@@ -24,9 +24,12 @@ export function AESCongressSummary({
         {row.start_year}-{row.end_year} · {row.presidents}
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3">
-        <Metric label="President AES" value={formatScore(row.president_aes_mean)} />
         <Metric
-          label="Congress median"
+          label="President AES mean"
+          value={formatScore(row.president_aes_mean)}
+        />
+        <Metric
+          label="Congress NOM median"
           value={nullableScore(row.congress_median_nominate)}
         />
         <Metric

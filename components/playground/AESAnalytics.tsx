@@ -151,7 +151,7 @@ function tabLabel(tab: AnalyticsTab): string {
     case "presidents":
       return "President means";
     case "congress":
-      return "Congress medians";
+      return "Congress benchmark";
     case "nominate":
       return "NOMINATE";
     default:
@@ -166,7 +166,7 @@ function tabTitle(tab: AnalyticsTab): string {
     case "presidents":
       return "President Means";
     case "congress":
-      return "Congress Median Comparison";
+      return "Congress Benchmark";
     case "nominate":
       return "NOMINATE Validation";
     default:
@@ -177,11 +177,11 @@ function tabTitle(tab: AnalyticsTab): string {
 function tabDescription(tab: AnalyticsTab): string {
   switch (tab) {
     case "party":
-      return "Compare score distributions and party means for the selected period.";
+      return "Compare Democratic and Republican score distributions and party means for the selected period.";
     case "presidents":
-      return "Compare directive-level presidential mean AES scores from Truman onward.";
+      return "Compare directive-level presidential mean AES scores for ideological directives from Truman onward.";
     case "congress":
-      return "Compare Congress median NOMINATE scores with presidential AES by Congress.";
+      return "Benchmark presidential AES against the Congress-level NOMINATE median by Congress.";
     case "nominate":
       return "Compare Truman-onward AES means with presidential NOMINATE scores.";
     default:

@@ -131,12 +131,13 @@ def president_means(rows: list[CanonicalRow]) -> list[PresidentMean]:
     means: list[PresidentMean] = []
     for president, accumulator in all_scores.items():
         info = PRESIDENTS[president]
-        ideological_mean = mean_or_none(
-            ideological_scores.get(president, ScoreAccumulator()),
+        ideological_accumulator = ideological_scores.get(president, ScoreAccumulator())
+        non_ideological_accumulator = non_ideological_scores.get(
+            president,
+            ScoreAccumulator(),
         )
-        non_ideological_mean = mean_or_none(
-            non_ideological_scores.get(president, ScoreAccumulator()),
-        )
+        ideological_mean = mean_or_none(ideological_accumulator)
+        non_ideological_mean = mean_or_none(non_ideological_accumulator)
         difference = (
             None
             if ideological_mean is None or non_ideological_mean is None
@@ -150,6 +151,8 @@ def president_means(rows: list[CanonicalRow]) -> list[PresidentMean]:
                 "start_year": accumulator.start_year or 0,
                 "end_year": accumulator.end_year or 0,
                 "n": accumulator.n,
+                "n_ideological": ideological_accumulator.n,
+                "n_non_ideological": non_ideological_accumulator.n,
                 "mean_all": rounded_metric(accumulator.mean()),
                 "mean_ideological": ideological_mean,
                 "mean_non_ideological": non_ideological_mean,

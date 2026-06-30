@@ -6,15 +6,16 @@ import type {
   IdeologyFlag,
 } from "./aesTypes";
 
-export const PARTY_COLORS: Readonly<Record<string, string>> = {
+export type MajorParty = "Democratic" | "Republican";
+
+export const MAJOR_PARTIES: readonly MajorParty[] = [
+  "Democratic",
+  "Republican",
+];
+
+export const PARTY_COLORS: Readonly<Record<MajorParty, string>> = {
   Democratic: "#3b82f6",
-  Democrat: "#3b82f6",
   Republican: "#ef4444",
-  "Democratic-Republican": "#14b8a6",
-  Federalist: "#a855f7",
-  Whig: "#f59e0b",
-  "National Union": "#64748b",
-  Independent: "#94a3b8",
 };
 
 export const IDEOLOGY_COLORS: Readonly<Record<IdeologyFilter, string>> = {
@@ -74,7 +75,20 @@ export function ideologyColor(value: IdeologyFlag): string {
 }
 
 export function partyColor(party: string): string {
-  return PARTY_COLORS[party] ?? "#6b7280";
+  const majorParty = majorPartyLabel(party);
+  return majorParty === null ? "#64748b" : PARTY_COLORS[majorParty];
+}
+
+export function majorPartyLabel(party: string): MajorParty | null {
+  switch (party) {
+    case "Democratic":
+    case "Democrat":
+      return "Democratic";
+    case "Republican":
+      return "Republican";
+    default:
+      return null;
+  }
 }
 
 export function typeColor(value: string): string {

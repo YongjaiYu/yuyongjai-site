@@ -7,7 +7,7 @@ type AESCongressChartProps = {
   readonly onSelect: (congress: number) => void;
 };
 
-type SeriesKey = "aes" | "congressMedian" | "presidentNominate";
+type SeriesKey = "aes" | "congressMedian";
 
 type ChartScales = {
   readonly x: (congress: number) => number;
@@ -32,8 +32,7 @@ const SERIES: readonly {
   readonly color: string;
 }[] = [
   { key: "aes", label: "President AES mean", color: "#22d3ee" },
-  { key: "congressMedian", label: "Congress median NOMINATE", color: "#f59e0b" },
-  { key: "presidentNominate", label: "President NOMINATE", color: "#a78bfa" },
+  { key: "congressMedian", label: "Congress NOMINATE median", color: "#f59e0b" },
 ];
 
 export function AESCongressChart({
@@ -49,7 +48,7 @@ export function AESCongressChart({
     <div className="min-w-0 rounded border border-slate-800 bg-slate-900/30 p-4">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <div className="text-xs uppercase tracking-widest text-slate-500">
-          Congress comparison
+          Congress benchmark
         </div>
         <div className="flex flex-wrap gap-3 text-[11px] text-slate-400">
           {SERIES.map((series) => (
@@ -184,7 +183,6 @@ function buildScales(rows: readonly CongressComparison[]): ChartScales {
   const scores = rows.flatMap((row) => [
     row.president_aes_mean,
     row.congress_median_nominate,
-    row.president_nominate,
   ]);
   const numericScores = scores.filter((score) => score !== null);
   const minCongress = Math.min(...rows.map((row) => row.congress));
@@ -236,8 +234,6 @@ function seriesValue(row: CongressComparison, series: SeriesKey): number | null 
       return row.president_aes_mean;
     case "congressMedian":
       return row.congress_median_nominate;
-    case "presidentNominate":
-      return row.president_nominate;
     default:
       return assertNever(series);
   }

@@ -23,14 +23,16 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
     : samples[0] ?? "";
   const [sample, setSample] = useState(defaultSample);
   const [selectedShort, setSelectedShort] = useState<string | null>(null);
+  const [hoveredShort, setHoveredShort] = useState<string | null>(null);
   const points = useMemo(
     () => nominatePointsForSample(data, sample),
     [data, sample],
   );
   const metric = nominateMetricForSample(data, sample);
   const rows = useMemo(() => nominateFitRows(points, metric), [points, metric]);
+  const activeShort = hoveredShort ?? selectedShort;
   const activeRow =
-    rows.find((row) => row.point.short === selectedShort) ?? rows[0] ?? null;
+    rows.find((row) => row.point.short === activeShort) ?? rows[0] ?? null;
   const sampleFits = useMemo(
     () =>
       activeRow
@@ -78,8 +80,9 @@ export function AESNominatePanel({ data }: AESNominatePanelProps) {
         <AESNominateScatter
           rows={rows}
           metric={metric}
-          activeShort={activeRow?.point.short ?? null}
+          activeShort={activeShort}
           onSelect={setSelectedShort}
+          onHover={setHoveredShort}
         />
       </div>
       <AESNominateInspector
