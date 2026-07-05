@@ -55,7 +55,7 @@ export default function MobileNav() {
   );
 
   return (
-    <nav className="sticky top-0 z-40 -mx-6 mb-10 flex flex-wrap gap-x-5 gap-y-2 border-b border-slate-800 bg-slate-950 px-6 pb-4 pt-4 lg:-mx-12 lg:px-12">
+    <nav className="mobile_nav scrollbar-none" aria-label="Mobile navigation">
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.href.slice(1);
         return (
@@ -63,7 +63,7 @@ export default function MobileNav() {
             key={item.href}
             href={item.href}
             onClick={(e) => handleNavClick(e, item.href)}
-            className={`text-sm font-medium uppercase tracking-widest transition-colors ${
+            className={`shrink-0 text-sm font-medium uppercase tracking-widest transition-colors ${
               isActive
                 ? "text-slate-100"
                 : "text-slate-500 hover:text-slate-300"

@@ -105,23 +105,23 @@ function HighlightedAuthors({
 
 export default function Research() {
   return (
-    <section id="research" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Research</h2>
+    <section id="research" className="site_section">
+      <h2 className="section_heading">Research</h2>
 
-      <p className="mb-8 max-w-xl text-base font-sans leading-relaxed text-slate-300">
+      <p className="content_limiter mb-8 text-base font-sans leading-relaxed text-slate-300">
         My research brings together political institutions, political
         communication, and computational methods to study political actors&apos;
         strategy and representation.
       </p>
 
       {/* Publications */}
-      <h3 className="mt-6 mb-6 text-xl font-semibold text-slate-100">
+      <h3 className="section_kicker mb-4 mt-6">
         Publications
       </h3>
 
-      <div className="space-y-4">
+      <div className="feed">
         {PUBLICATIONS.map((pub) => (
-          <div key={pub.title}>
+          <article key={pub.title} className="surface_card">
             <HighlightedAuthors
               authors={pub.authors}
               highlighted={pub.highlighted}
@@ -134,22 +134,24 @@ export default function Research() {
               {pub.journal}.
             </span>
             <span className="text-base text-slate-500"> (KCI)</span>
-          </div>
+          </article>
         ))}
       </div>
 
       {/* Working Papers */}
-      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-100">
+      <h3 className="section_kicker mb-4 mt-12">
         Working Papers
       </h3>
 
-      <div className="space-y-0">
+      <div className="feed">
         {WORKING_PAPERS.map((paper) => (
           <article
             key={paper.title}
-            className="border-b border-slate-800 py-6 first:pt-0 last:border-b-0 transition-all duration-300 hover:bg-cyan-400/[0.03]"
+            className="surface_card"
           >
-            <h4 className="font-semibold text-slate-200">{paper.title}</h4>
+            <h4 className="font-semibold leading-snug text-slate-200">
+              {paper.title}
+            </h4>
             {paper.coauthors && (
               <p className="mt-1 text-base italic text-slate-500">
                 {paper.coauthors}
@@ -177,18 +179,24 @@ export default function Research() {
       </div>
 
       {/* Works in Progress */}
-      <h3 className="mt-12 mb-6 text-xl font-semibold text-slate-100">
+      <h3 className="section_kicker mb-4 mt-12">
         Works in Progress
       </h3>
 
-      <ul className="space-y-3">
+      <ul className="card_grid">
         {WORKS_IN_PROGRESS.map((item) => (
-          <li key={item.title} className="text-base rounded-md px-3 py-2 -mx-3 transition-all duration-300 hover:bg-cyan-400/[0.03]">
-            <span className="text-slate-200">{item.title}</span>
+          <li key={item.title} className="surface_card text-base">
+            <span className="block font-medium leading-snug text-slate-200">
+              {item.title}
+            </span>
             {item.coauthors && (
-              <span className="italic text-slate-500">
-                {" "}
-                ({item.coauthors})
+              <span className="mt-2 block italic text-slate-500">
+                {item.coauthors}
+              </span>
+            )}
+            {item.status && (
+              <span className="mt-2 block text-sm text-slate-500">
+                {item.status}
               </span>
             )}
           </li>

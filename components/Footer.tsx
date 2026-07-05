@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-slate-800 py-8">
-      <h2 className="mb-4 text-2xl font-semibold text-slate-100">Contact</h2>
-      <div className="mb-6 space-y-2 text-sm">
+    <footer className="site_section pb-8">
+      <h2 className="section_heading">Contact</h2>
+      <div className="cluster mb-6 text-sm">
         <p>
           <a
             href="mailto:yongjai.yu@email.ucr.edu"
@@ -22,7 +22,9 @@ export default function Footer() {
           </a>
         </p>
       </div>
-      <p className="text-sm text-slate-500">&copy; {new Date().getFullYear()} Yongjai Yu</p>
+      <p className="text-sm text-slate-500">
+        &copy; {new Date().getFullYear()} Yongjai Yu
+      </p>
     </footer>
   );
 }

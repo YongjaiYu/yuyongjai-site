@@ -1,13 +1,13 @@
 export default function CV() {
   return (
-    <section id="cv" className="py-12">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">CV</h2>
+    <section id="cv" className="site_section">
+      <h2 className="section_heading">CV</h2>
 
       <a
         href="/CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-base text-cyan-400 transition-colors hover:text-cyan-300 hover:underline"
+        className="surface_card inline-block text-base font-medium text-cyan-400 transition-colors hover:text-cyan-300"
       >
         See full CV (PDF) &rarr;
       </a>

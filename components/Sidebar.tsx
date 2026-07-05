@@ -58,19 +58,24 @@ export default function Sidebar() {
   );
 
   return (
-    <aside className="relative px-4 py-8 lg:fixed lg:left-0 lg:top-0 lg:flex lg:h-screen lg:w-[38%] lg:justify-center lg:px-10">
-      <div className="mx-auto w-full max-w-sm lg:my-auto">
+    <aside className="site_sidebar">
+      <div className="site_sidebar_inner">
         {/* Profile */}
         <div className="mb-6">
-          <Image
-            src="/profile.jpg"
-            alt="Yongjai Yu"
-            width={120}
-            height={120}
-            className="rounded-full ring-2 ring-slate-700"
-            priority
-          />
-          <h1 className="mt-5 text-4xl font-bold text-slate-100">Yongjai Yu</h1>
+          <div className="h-[120px] w-[120px] overflow-hidden rounded-full ring-2 ring-slate-700">
+            <Image
+              src="/profile.jpg"
+              alt="Yongjai Yu"
+              width={120}
+              height={120}
+              className="h-full w-full scale-[1.55] object-cover object-[50%_72%]"
+              priority
+              unoptimized
+            />
+          </div>
+          <h1 className="mt-5 text-4xl font-bold leading-tight text-slate-100">
+            Yongjai Yu
+          </h1>
           <p className="mt-2 text-base text-slate-400">Ph.D. Student at UCR</p>
         </div>
 
@@ -82,7 +87,7 @@ export default function Sidebar() {
         </p>
 
         {/* Research Tree */}
-        <div className="mb-6 text-sm leading-snug text-slate-600">
+        <div className="topic_map mb-6 text-sm leading-snug text-slate-600 scrollbar-none">
           <p>├── <span className="text-emerald-400">presidential-power/</span></p>
           <p>│   ├── <span className="text-blue-400">unilateral-actions/</span></p>
           <p>│   └── <span className="text-blue-400">cost-constrained-model/</span></p>
@@ -97,7 +102,7 @@ export default function Sidebar() {
         </div>
 
         {/* Navigation */}
-        <nav className="mt-8 hidden lg:block">
+        <nav className="mt-8 hidden lg:block" aria-label="Primary navigation">
           <ul className="space-y-2">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.slice(1);
@@ -125,7 +130,7 @@ export default function Sidebar() {
               );
             })}
           </ul>
-          <div className="mt-6 flex gap-6 text-slate-100">
+          <div className="cluster mt-6 text-slate-100">
             <a
               href="mailto:yongjai.yu@email.ucr.edu"
               aria-label="Email"

@@ -1,9 +1,9 @@
 export default function Software() {
   return (
-    <section id="software" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Software</h2>
+    <section id="software" className="site_section">
+      <h2 className="section_heading">Software</h2>
 
-      <div>
+      <article className="surface_card content_limiter">
         <a
           href="https://github.com/YongjaiYu/poljacc"
           target="_blank"
@@ -19,7 +19,7 @@ export default function Software() {
           Dense: Vocabulary Separability and Model Selection in Political Text
           Analysis.&rdquo;
         </p>
-      </div>
+      </article>
     </section>
   );
 }

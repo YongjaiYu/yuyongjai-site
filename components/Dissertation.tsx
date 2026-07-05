@@ -26,44 +26,52 @@ const CHAPTERS = [
 
 export default function Dissertation() {
   return (
-    <section id="dissertation" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Dissertation</h2>
+    <section id="dissertation" className="site_section">
+      <h2 className="section_heading">Dissertation</h2>
 
-      <h4 className="text-lg font-semibold text-slate-100">
-        Strategic Unilateralism and Presidential Policy Choice
-      </h4>
+      <div className="content_limiter">
+        <h3 className="text-xl font-semibold leading-snug text-slate-100">
+          Strategic Unilateralism and Presidential Policy Choice
+        </h3>
 
-      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
-        Overview
-      </h4>
+        <h4 className="section_kicker mt-8 mb-4">
+          Overview
+        </h4>
 
-      <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
-        This dissertation examines how presidents calibrate the content of
-        unilateral actions to manage institutional constraints and maximize
-        political benefits. The first chapter proposes a new measurement
-        framework, anchored embedding scaling (AES), to estimate the locations
-        of unilateral actions within the liberal-conservative policy space. The
-        second chapter recovers the inherited policy status quo for each
-        directive and estimates the policy displacement produced by unilateral
-        actions using AES. The third chapter extends existing models of
-        unilateral action by proposing a cost-constrained model of presidential
-        policy choice.
-      </p>
+        <p className="font-sans text-base leading-relaxed text-slate-300">
+          This dissertation examines how presidents calibrate the content of
+          unilateral actions to manage institutional constraints and maximize
+          political benefits. The first chapter proposes a new measurement
+          framework, anchored embedding scaling (AES), to estimate the locations
+          of unilateral actions within the liberal-conservative policy space. The
+          second chapter recovers the inherited policy status quo for each
+          directive and estimates the policy displacement produced by unilateral
+          actions using AES. The third chapter extends existing models of
+          unilateral action by proposing a cost-constrained model of presidential
+          policy choice.
+        </p>
+      </div>
 
       {/* Three Chapters */}
-      <div className="mt-8 space-y-6">
+      <div className="feed mt-8">
         {CHAPTERS.map((chapter) => (
-          <div
+          <article
             key={chapter.number}
-            className="border-l-2 border-slate-700 pl-4 transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/[0.03]"
+            className="surface_card grid gap-3 sm:grid-cols-[5.5rem_minmax(0,1fr)]"
           >
-            <p className="text-sm text-slate-500">Chapter {chapter.number}</p>
-            <h4 className="mt-1 font-semibold text-slate-200">
-              {chapter.title}
-            </h4>
-            <p className="text-base text-cyan-400/70">{chapter.subtitle}</p>
-            <p className="mt-1 font-sans text-base text-slate-400">{chapter.description}</p>
-          </div>
+            <p className="text-sm font-medium text-slate-500">
+              Chapter {chapter.number}
+            </p>
+            <div className="min-w-0">
+              <h4 className="font-semibold leading-snug text-slate-200">
+                {chapter.title}
+              </h4>
+              <p className="mt-1 text-base text-cyan-400/75">{chapter.subtitle}</p>
+              <p className="mt-2 font-sans text-base leading-relaxed text-slate-400">
+                {chapter.description}
+              </p>
+            </div>
+          </article>
         ))}
       </div>
     </section>

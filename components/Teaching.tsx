@@ -49,38 +49,42 @@ export default function Teaching() {
   );
 
   return (
-    <section id="teaching" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">Teaching</h2>
+    <section id="teaching" className="site_section">
+      <h2 className="section_heading">Teaching</h2>
 
-      <p className="font-sans text-base text-slate-300">
+      <p className="content_limiter font-sans text-base text-slate-300">
         Teaching Assistant &mdash; UC Riverside (2023 &ndash; Present)
       </p>
 
-      {/* Graduate Courses */}
-      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
-        Graduate
-      </h4>
-      <ul className="space-y-2">
-        {graduateCourses.map((course) => (
-          <li key={course.code} className="text-base">
-            <span className="font-mono text-cyan-400">{course.code}</span>
-            <span className="text-slate-200"> {course.name}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="card_grid mt-8">
+        <div className="surface_card">
+          <h3 className="section_kicker mb-4">
+            Graduate
+          </h3>
+          <ul className="grid gap-2">
+            {graduateCourses.map((course) => (
+              <li key={course.code} className="text-base">
+                <span className="font-mono text-cyan-400">{course.code}</span>
+                <span className="text-slate-200"> {course.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Undergraduate Courses */}
-      <h4 className="mt-8 mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
-        Undergraduate
-      </h4>
-      <ul className="space-y-2">
-        {undergraduateCourses.map((course) => (
-          <li key={course.code} className="text-base">
-            <span className="font-mono text-cyan-400">{course.code}</span>
-            <span className="text-slate-200"> {course.name}</span>
-          </li>
-        ))}
-      </ul>
+        <div className="surface_card">
+          <h3 className="section_kicker mb-4">
+            Undergraduate
+          </h3>
+          <ul className="grid gap-2">
+            {undergraduateCourses.map((course) => (
+              <li key={course.code} className="text-base">
+                <span className="font-mono text-cyan-400">{course.code}</span>
+                <span className="text-slate-200"> {course.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }

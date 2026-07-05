@@ -25,32 +25,34 @@ const EDUCATION = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20">
-      <h2 className="mb-6 text-2xl font-semibold text-slate-100">About</h2>
+    <section id="about" className="site_section">
+      <h2 className="section_heading">About</h2>
 
-      <p className="max-w-xl text-base font-sans leading-relaxed text-slate-300">
+      <div className="content_limiter stack font-sans text-base leading-relaxed text-slate-300">
+        <p>
         I study presidential power in the separation of powers system. My
         research asks what policy presidents pursue through unilateral
         actions, and how they calibrate the policy content of those actions
         under institutional constraint. To study this, I develop an anchored
         embedding scaling method to measure policy displacement of unilateral
         actions.
-      </p>
+        </p>
 
-      <p className="mt-4 max-w-xl text-base font-sans leading-relaxed text-slate-300">
+        <p>
         Substantively, I work on American political institutions, executive
         politics, legislative politics, and political communication.
         Methodologically, I use large-scale text analysis, large language
         models, and other computational tools to build new measures from
         political texts.
-      </p>
+        </p>
+      </div>
 
       {/* Research Interests */}
-      <div className="mt-8 flex flex-wrap gap-2">
+      <div className="cluster mt-8">
         {RESEARCH_INTERESTS.map((interest) => (
           <span
             key={interest}
-            className="rounded-full border border-slate-700 px-3 py-1 text-sm text-slate-300"
+            className="rounded-full border border-slate-700/80 bg-slate-900/40 px-3 py-1 text-sm text-slate-300"
           >
             {interest}
           </span>
@@ -59,12 +61,12 @@ export default function About() {
 
       {/* Education */}
       <div className="mt-12">
-        <h4 className="mb-4 text-sm font-medium uppercase tracking-widest text-slate-500">
+        <h3 className="section_kicker mb-4">
           Education
-        </h4>
-        <ul className="space-y-3">
+        </h3>
+        <ul className="feed">
           {EDUCATION.map((entry) => (
-            <li key={entry.degree} className="text-base">
+            <li key={entry.degree} className="surface_card text-base">
               <span className="font-medium text-slate-300">
                 {entry.degree}
               </span>
