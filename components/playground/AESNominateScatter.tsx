@@ -36,7 +36,7 @@ export function AESNominateScatter({
     <div className="max-w-full overflow-x-auto rounded border border-slate-800 bg-slate-900/30 p-4">
       <svg
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-        className="block w-full min-w-[620px]"
+        className="block w-full sm:min-w-[620px]"
       >
         {yTicks(bounds).map((tick) => (
           <line

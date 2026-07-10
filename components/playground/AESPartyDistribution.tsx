@@ -73,7 +73,7 @@ export function AESPartyDistribution({ data, range }: AESPartyDistributionProps)
         <div className="max-w-full overflow-x-auto">
           <svg
             viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-            className="block w-full min-w-[620px]"
+            className="block w-full sm:min-w-[620px]"
           >
             {yTicks(maxValue, mode).map((tick) => (
               <line

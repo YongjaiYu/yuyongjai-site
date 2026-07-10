@@ -101,7 +101,7 @@ export function AESScatterPlot({
         <svg
           ref={svgRef}
           viewBox={`0 0 ${CHART_DIMENSIONS.width} ${CHART_DIMENSIONS.height}`}
-          className="block w-full min-w-[640px]"
+          className="block w-full sm:min-w-[640px]"
           onMouseMove={handleMouseMove}
           onMouseLeave={() => setHoveredPoint(null)}
         >

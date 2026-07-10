@@ -65,7 +65,7 @@ export function AESCongressChart({
       <div className="max-w-full overflow-x-auto">
         <svg
           viewBox={`0 0 ${CHART.width} ${CHART.height}`}
-          className="block w-full min-w-[660px]"
+          className="block w-full sm:min-w-[660px]"
         >
           {scoreTicks.map((tick) => (
             <g key={tick}>

@@ -2,7 +2,18 @@
 
 import { useState, useCallback } from "react";
 
-const PASSCODE = "aes2026";
+// Owner code always works. Event code (for the PolMeth 2026 poster QR) works
+// only through 2026-07-17 23:59:59 Michigan time (EDT), then reverts to owner-only.
+const OWNER_CODE = "aes2026";
+const EVENT_CODE = "polmeth2026";
+const EVENT_EXPIRES = new Date("2026-07-17T23:59:59-04:00").getTime();
+
+function codeAccepted(raw: string): boolean {
+  const v = raw.trim().toLowerCase();
+  if (v === OWNER_CODE) return true;
+  if (v === EVENT_CODE && Date.now() <= EVENT_EXPIRES) return true;
+  return false;
+}
 
 export default function PasswordGate({
   children,
@@ -16,7 +27,7 @@ export default function PasswordGate({
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
-      if (input.trim().toLowerCase() === PASSCODE) {
+      if (codeAccepted(input)) {
         setUnlocked(true);
         setError(false);
       } else {
