@@ -34,14 +34,6 @@ const DIAGNOSTIC_GROUPS: readonly DiagnosticGroup[] = [
           "AUC in roll-call vote prediction: a NOMINATE-only baseline (0.821), the AES interaction model (0.941), and the Crosson et al. benchmark (0.960). AES closes 87% of the baseline-to-benchmark gap.",
       },
       {
-        src: "/figures/aes/president_nominate_jackknife.png",
-        width: 1800,
-        height: 1195,
-        title: "Leave-one-president-out NOMINATE correlation",
-        caption:
-          "Jackknife sensitivity of the president-level AES–NOMINATE correlation (full sample r = 0.597). Omitting any single president moves r between 0.543 (Reagan omitted) and 0.687 (Nixon omitted).",
-      },
-      {
         src: "/figures/aes/permutation_placebo.png",
         width: 1800,
         height: 832,
