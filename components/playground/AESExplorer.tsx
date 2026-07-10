@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AESAnalytics } from "./AESAnalytics";
+import { AESDiagnosticsGallery } from "./AESDiagnosticsGallery";
 import { AESScatterPlot } from "./AESScatterPlot";
 import {
   COLOR_MODES,
@@ -97,6 +98,7 @@ export default function AESExplorer() {
         colorMode={colorMode}
       />
       <AESAnalytics />
+      <AESDiagnosticsGallery />
     </div>
   );
 }
