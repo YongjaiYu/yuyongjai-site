@@ -62,14 +62,6 @@ const DIAGNOSTIC_GROUPS: readonly DiagnosticGroup[] = [
         caption:
           "Directives and anchor bills separate cleanly on a bill–directive form axis while overlapping fully on AES. The form–ideology cosine of −0.019 indicates the scale is not driven by document form.",
       },
-      {
-        src: "/figures/aes/party_gap_by_sample.png",
-        width: 1800,
-        height: 952,
-        title: "Party gap by sample",
-        caption:
-          "Republican-minus-Democratic AES gap (Cohen's d) for ideological directives (+0.640), all directives (+0.441), and non-ideological directives (+0.235).",
-      },
     ],
   },
 ];
@@ -99,7 +91,7 @@ export function AESDiagnosticsGallery() {
                     href={figure.src}
                     target="_blank"
                     rel="noreferrer"
-                    className="block overflow-hidden rounded border border-slate-800 transition-colors hover:border-slate-600"
+                    className="block overflow-hidden rounded border border-slate-800 bg-white p-2 transition-colors hover:border-slate-600 sm:p-3"
                   >
                     <Image
                       src={figure.src}
