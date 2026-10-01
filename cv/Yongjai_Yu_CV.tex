@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+
+\definecolor{cvaccent}{HTML}{233B53}
+\definecolor{cvmuted}{HTML}{444444}
+\definecolor{cvrule}{HTML}{B0B0B0}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=cvaccent,
+    linkcolor=cvaccent,
+    pdftitle={Yongjai Yu -- Curriculum Vitae},
+    pdfauthor={Yongjai Yu}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=4pt,topsep=4pt,parsep=0pt}
+\setlength{\emergencystretch}{1.5em}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\small\color{cvmuted}Yongjai Yu\enspace |\enspace Curriculum Vitae}
+\fancyfoot[R]{\small\color{cvmuted}\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\small\color{cvmuted}Yongjai Yu\enspace |\enspace Curriculum Vitae}%
+  \fancyfoot[R]{\small\color{cvmuted}\thepage}%
+}
+\fancypagestyle{cvlastpage}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\small\color{cvmuted}Yongjai Yu\enspace |\enspace Curriculum Vitae\enspace |\enspace September 2026}%
+  \fancyfoot[R]{\small\color{cvmuted}\thepage}%
+}
+
+\newcommand{\cvsection}[1]{%
+  \par\addvspace{12pt}
+  \Needspace{5\baselineskip}
+  {\large\sffamily\bfseries\color{cvaccent}#1}\par\nobreak
+  \vspace{3pt}{\color{cvrule}\hrule height 0.3pt}\nobreak
+  \vspace{8pt}
+}
+
+\newcommand{\cvdate}[1]{{\small\color{cvmuted}#1}}
+\newcommand{\entry}[4]{%
+  \textbf{#1} \hfill {\small\color{cvmuted}#2}\\
+  #3 \hfill \cvdate{#4}
+}
+\newcommand{\paper}[2]{%
+  \par\addvspace{8pt}
+  \noindent\begin{minipage}{\linewidth}
+    \raggedright\textbf{#1}.%
+    \if\relax\detokenize{#2}\relax\else
+      \ {#2}%
+    \fi
+  \end{minipage}\par
+}
+\setlength{\headheight}{14pt}
+\begin{document}
+\raggedbottom
+
+\noindent\hbox to \linewidth{%
+  \hfil{\LARGE\rmfamily\bfseries Yongjai Yu}\hfil
+}\par
+\vspace{10pt}
+\begingroup
+\centering
+Ph.D. Student, Department of Political Science, University of California, Riverside\par
+\vspace{4pt}
+{\small
+\href{mailto:yongjai.yu@email.ucr.edu}{yongjai.yu@email.ucr.edu}
+\enspace\textbar\enspace
+\href{mailto:yyu209@ucr.edu}{yyu209@ucr.edu}
+\enspace\textbar\enspace
+\href{https://yuyongj.ai}{yuyongj.ai}
+\enspace\textbar\enspace
+\href{https://github.com/YongjaiYu}{github.com/YongjaiYu}}\par
+\endgroup
+
+\cvsection{Education}
+
+\entry{University of California, Riverside}{Riverside, CA}{Ph.D. in Political Science}{2022--Present}\\
+\textbf{Dissertation:} \textbf{Strategic Unilateralism and Presidential Policy Choice}\\
+\textbf{Committee:} Kevin M. Esterling (Chair), Nick Weller, Nicholas G. Napolio, and Jon C. Rogowski
+
+\vspace{0.35cm}
+\entry{Seoul National University}{Seoul, Korea}{Master of Public Policy, Graduate School of Public Administration}{February 2022}\\
+Thesis: \textbf{A Study on the Role of Contract Legislation in the Legislative Process}\\
+Advisor: Jisuk Woo\\
+Qualifying Exams: Public Policy Theory; Research Methodology
+
+\vspace{0.35cm}
+\entry{Korea University}{Seoul, Korea}{Bachelor of Arts in History, College of Liberal Arts}{February 2016}
+
+\cvsection{Research Interests}
+
+\textbf{Substantive:} American political institutions, presidential power and unilateral action, partisan loyalty.\\
+\textbf{Methods:} Text and multimodal analysis, measurement and validation, survey digital twins.
+
+\cvsection{Research Affiliation}
+
+\textbf{Laboratory for Technology, Communication and Democracy (TeCD-Lab)}\\
+University of California, Riverside \hfill \cvdate{2026--Present}\\
+Director: Professor Kevin M. Esterling
+
+\cvsection{Publications}
+
+\noindent\begin{minipage}{\linewidth}
+\raggedright
+Cho, Eunmi, Sinjae Kang, Kyusik Yang, \textbf{Yongjai Yu}, and Yoonseok Lee. 2024. \textbf{``Measuring Legislators' Ideology and Analyzing Ideological Differences Across Standing Committees Using Wordfish: Evidence from the Minutes of Standing Committee Meetings in the 19th and 20th National Assembly.''} \textit{Journal of Research Methodology}. KCI. In Korean.
+\end{minipage}\par
+
+\cvsection{Working Papers}
+
+\paper{What Are We Generalizing To? How Test Design Shapes Model Choice in Congressional Text Classification}
+{With Eunseong Oh. Submitted to \textit{Political Analysis}.}
+\paper{Not Every Presidential Directive Is Ideological: Classifying Ideological Content in Unilateral Action}
+{Dissertation project, Chapter 1, Part I.}
+\paper{Measuring the Ideological Content of Presidential Directives Using Anchored Embedding Scaling}
+{Dissertation project, Chapter 1, Part II.}
+\paper{When Conspiracy Belief Mobilizes Donors: Campaign Contributions in American Politics}{}
+\paper{When Text Meets Image: Unlocking Frames of Political Videos with Multimodal CLIP}
+{With Eunseong Oh. Presented at PolMeth 2025.}
+
+\cvsection{Works in Progress}
+
+\paper{Survey Digital Twins Project}
+{With Eunseong Oh. Fidelity validation using ANES and CES data.}
+\paper{Fandom Politics: A Formal Theory of Unconditional Partisan Loyalty and Democratic Backsliding}{}
+\paper{Korean National Assembly YouTube Communication}
+{With Kyusik Yang. Multimodal analysis.}
+\paper{Measuring Regulatory Change Through Delegated Legislation: Evidence from Korean Presidential Decrees}{}
+\paper{Collaborative Pedagogy at Minority-Serving Institutions}
+{With Karina Alpayeva, Emmanoel Ferreira, Sarah Siddique, and Kim Yi Dionne.}
+
+\cvsection{Conference Presentations}
+
+\textbf{Society for Political Methodology (PolMeth)} \hfill \cvdate{2026}
+\begin{itemize}
+    \item Poster presenter, \textbf{``Measuring the Ideological Content of Presidential Directives Using Anchored Embedding Scaling.''}
+\end{itemize}
+
+\par\addvspace{8pt}
+\Needspace{7\baselineskip}
+\textbf{Society for Political Methodology (PolMeth)} \hfill \cvdate{2025}
+\begin{itemize}
+    \item Poster presenter, \textbf{``When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis.''} With Eunseong Oh.
+    \item Co-author, \textbf{``When Text Meets Image: Unlocking Frames of Political Videos with Multimodal CLIP.''} With Eunseong Oh.
+\end{itemize}
+
+\vspace{0.25cm}
+\Needspace{5\baselineskip}
+\textbf{Midwest Political Science Association (MPSA)} \hfill \cvdate{2025}
+\begin{itemize}
+    \item Presenter, \textbf{``Not Every Unilateral Action Is Ideological: Ideological Content and the President's Strategic Behavior.''}
+\end{itemize}
+
+\cvsection{Research Software and Data Products}
+
+\begin{itemize}[label={}]
+    \item \href{https://github.com/YongjaiYu/poljacc}{\textbf{poljacc.}} Python package for vocabulary separability diagnostics in political text classification.
+    \item \textbf{AES Explorer.} Interactive explorer of presidential directives scaled with anchored embeddings.
+    \item \textbf{Korean Presidential Decree Explorer.} Searchable amendments to presidential decrees, 1988--March 2026.
+    \item \textbf{Text Polarization Workbench.} Interactive analysis of partisan vocabulary in U.S. congressional floor speeches.
+\end{itemize}
+
+\cvsection{Research Software Development}
+
+\textbf{Prytaneum} \hfill \cvdate{September 2026--Present}\\
+Web Development Team, TeCD-Lab, University of California, Riverside\\
+AI-assisted platform for deliberative public engagement.
+
+\cvsection{Teaching Experience}
+
+\textbf{Summer Quant Camp} \hfill \cvdate{Summer 2026}\\
+Instructor, University of California, Riverside\\
+Foundational statistics and R for incoming graduate students.
+
+\vspace{0.25cm}
+\Needspace{5\baselineskip}
+\textbf{MacREU} \hfill \cvdate{Summer 2026}\\
+Instructor, University of California, Riverside\\
+Guest lectures on data literacy, presentations, poster design, and abstract writing (MacREU/MEMENCYS).
+
+\vspace{0.25cm}
+
+\Needspace{6\baselineskip}
+\textbf{Teaching Assistant}\\
+University of California, Riverside \hfill Riverside, CA\\
+\cvdate{October 2023--Present}
+
+\begin{itemize}
+    \item \textbf{Graduate:} Survey of Quantitative Methods (POSC 202A); Survey of Quantitative Methods (POSC 202B)
+    \item \textbf{Undergraduate:} American Politics (POSC 010); Comparative Politics (POSC 015); Politics of the Global South (POSC 017); Regulation: A Political Perspective (POSC 186); Politics and Economic Policy: American Politics (POSC 182E)
+\end{itemize}
+
+\cvsection{Fellowships, Grants, and Awards}
+
+\begin{itemize}
+    \item Gabbert Research Funding, Department of Political Science, UC Riverside (\$2,000)
+    \item PolMeth 2025 Emory Travel Grant
+    \item UC Riverside Chancellor's Distinguished Fellowship Award
+    \item GSA Travel Grant
+\end{itemize}
+
+\cvsection{Research Community, Service, and Training}
+
+\textbf{Founder, Political Science Quantitative Methods Group} \hfill Riverside, CA\\
+University of California, Riverside \hfill \cvdate{June 2023--Present}\\
+Graduate methods group for research feedback and discussion of political methodology.
+
+\vspace{0.25cm}
+\textbf{Member, Identity \& Politics Lab} \hfill Riverside, CA\\
+University of California, Riverside \hfill \cvdate{January 2025--Present}
+
+\vspace{0.25cm}
+\textbf{Participant, SICSS-Korea} \hfill Daejeon, Korea\\
+Summer Institute in Computational Social Science \hfill \cvdate{July 2024}\\
+KAIST and KDI School of Public Policy and Management
+
+\cvsection{Skills}
+
+\textbf{Programming and Statistical Analysis:} R, Python\\
+\textbf{Typesetting and Reproducible Writing:} \LaTeX\\
+\textbf{Methods:} Bayesian statistics; causal inference; text analysis; large language models; deep learning; multimodal analysis
+
+\Needspace{9\baselineskip}
+\cvsection{References}
+
+\textbf{Kevin M. Esterling}\\
+Professor and Chair, Department of Political Science\\
+University of California, Riverside\\
+\href{mailto:kevin.esterling@ucr.edu}{kevin.esterling@ucr.edu}
+
+\par\thispagestyle{cvlastpage}
+\end{document}
