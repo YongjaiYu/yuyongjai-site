@@ -57,8 +57,9 @@ export default function Teaching() {
       <div className="card_grid">
         <article className="surface_card">
           <h4 className="font-semibold leading-snug text-slate-200">
-            Summer Quant Camp Instructor
+            Summer Quant Camp
           </h4>
+          <p className="mt-1 text-base text-slate-400">Instructor</p>
           <p className="mt-1 text-base text-slate-400">UC Riverside</p>
           <p className="mt-2 font-sans text-base leading-relaxed text-slate-300">
             Instruction in foundational statistics and R for incoming
@@ -68,8 +69,9 @@ export default function Teaching() {
 
         <article className="surface_card">
           <h4 className="font-semibold leading-snug text-slate-200">
-            MacREU Instructor
+            MacREU
           </h4>
+          <p className="mt-1 text-base text-slate-400">Instructor</p>
           <p className="mt-1 text-base text-slate-400">UC Riverside</p>
           <p className="mt-2 font-sans text-base leading-relaxed text-slate-300">
             Guest lectures on data literacy, research presentations, poster
