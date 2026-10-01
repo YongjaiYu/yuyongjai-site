@@ -24,11 +24,37 @@ interface Publication {
 const WORKING_PAPERS: WorkingPaper[] = [
   {
     title:
-      "When Sparse Beats Dense: Vocabulary Separability and Model Selection in Political Text Analysis",
+      "What Are We Generalizing To? How Test Design Shapes Model Choice in Congressional Text Classification",
     coauthors: "with Eunseong Oh",
+    status: "Submitted to",
+    journal: "Political Analysis",
     description:
-      "Develops a diagnostic of vocabulary separability to guide model selection in political text classification, and explains when sparse representations outperform dense alternatives.",
+      "We compare five classifiers across three congressional text tasks to examine how test design shapes model choice. The results show why researchers should define the population they intend to classify before selecting a model.",
     tags: ["Text Analysis", "NLP", "Model Selection"],
+  },
+  {
+    title:
+      "Not Every Presidential Directive Is Ideological: Classifying Ideological Content in Unilateral Action",
+    status: "Dissertation Project · Chapter 1, Part I",
+    description:
+      "I develop a classification of presidential directives that distinguishes ideological from non-ideological actions. This distinction connects the measurement of unilateral action more closely to the policy choices that theories of presidential power seek to explain.",
+    tags: ["Presidential Power", "Unilateral Action", "Classification"],
+  },
+  {
+    title:
+      "Measuring the Ideological Content of Presidential Directives Using Anchored Embedding Scaling",
+    status: "Dissertation Project · Chapter 1, Part II",
+    description:
+      "I develop anchored embedding scaling to locate presidential directives in ideological space. The method combines text embeddings with ideological estimates for legislative bills to place unilateral actions on a common scale.",
+    tags: ["Ideological Scaling", "Text Embeddings", "Measurement"],
+  },
+  {
+    title: "Survey Digital Twins Project",
+    coauthors: "with Eunseong Oh",
+    status: "Fidelity Validation of Survey Digital Twins",
+    description:
+      "We evaluate how faithfully LLM-based survey digital twins reproduce human response distributions. Using ANES and CES data, we examine whether persona attributes selected for one survey question remain useful across questions, substantive domains, and survey instruments.",
+    tags: ["Survey Research", "Digital Twins", "Validation"],
   },
   {
     title:
@@ -162,7 +188,7 @@ export default function Research() {
                 {paper.status}
                 {paper.journal && (
                   <>
-                    {" at "}
+                    {" "}
                     <span className="italic">{paper.journal}</span>
                   </>
                 )}

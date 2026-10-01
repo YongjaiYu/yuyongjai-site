@@ -15,9 +15,9 @@ export default function Software() {
         <p className="mt-2 font-sans text-sm leading-relaxed text-slate-400">
           Vocabulary separability diagnostics for text classification.
           <br />
-          Companion package for Oh and Yu, &ldquo;When Sparse Beats
-          Dense: Vocabulary Separability and Model Selection in Political Text
-          Analysis.&rdquo;
+          Companion package for Oh and Yu, &ldquo;What Are We Generalizing To?
+          How Test Design Shapes Model Choice in Congressional Text
+          Classification.&rdquo;
         </p>
       </article>
     </section>

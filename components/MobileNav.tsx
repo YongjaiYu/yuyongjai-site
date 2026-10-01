@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { label: "About", href: "#about" },
   { label: "Dissertation", href: "#dissertation" },
   { label: "Research", href: "#research" },
+  { label: "Developing", href: "#developing" },
   { label: "Teaching", href: "#teaching" },
   { label: "Software", href: "#software" },
   { label: "Workbench", href: "#workbench" },

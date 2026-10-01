@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import About from "@/components/About";
 import Dissertation from "@/components/Dissertation";
 import Research from "@/components/Research";
+import Developing from "@/components/Developing";
 import Teaching from "@/components/Teaching";
 import Software from "@/components/Software";
 import Playground from "@/components/Playground";
@@ -20,6 +21,7 @@ export default function Home() {
         <About />
         <Dissertation />
         <Research />
+        <Developing />
         <Teaching />
         <Software />
         <Playground />

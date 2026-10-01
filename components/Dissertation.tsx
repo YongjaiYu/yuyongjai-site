@@ -2,10 +2,10 @@ const CHAPTERS = [
   {
     number: 1,
     title:
-      "Measuring the Ideological Content of Presidential Directives Using Anchored Embedding Scaling",
+      "Classifying and Measuring the Ideological Content of Presidential Directives",
     subtitle: "Classification and AES",
     description:
-      "This chapter develops a classification scheme for unilateral actions and estimates the ideological positions of presidential directives. It classifies directives by policy content and instrument, then uses anchored embedding scaling to locate them in liberal-conservative policy space.",
+      "Part I develops a classification of presidential directives that distinguishes ideological from non-ideological actions. Part II uses anchored embedding scaling to locate directives in liberal-conservative policy space, combining text embeddings with ideological estimates for legislative bills.",
   },
   {
     number: 2,
@@ -41,9 +41,9 @@ export default function Dissertation() {
         <p className="font-sans text-base leading-relaxed text-slate-300">
           This dissertation examines how presidents calibrate the content of
           unilateral actions to manage institutional constraints and maximize
-          political benefits. The first chapter proposes a new measurement
-          framework, anchored embedding scaling (AES), to estimate the locations
-          of unilateral actions within the liberal-conservative policy space. The
+          political benefits. The first chapter distinguishes ideological from
+          non-ideological directives, then develops anchored embedding scaling
+          (AES) to estimate their locations within liberal-conservative policy space. The
           second chapter recovers the inherited policy status quo for each
           directive and estimates the policy displacement produced by unilateral
           actions using AES. The third chapter extends existing models of

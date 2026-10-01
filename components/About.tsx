@@ -30,20 +30,41 @@ export default function About() {
 
       <div className="content_limiter stack font-sans text-base leading-relaxed text-slate-300">
         <p>
-        I study presidential power in the separation of powers system. My
-        research asks what policy presidents pursue through unilateral
-        actions, and how they calibrate the policy content of those actions
-        under institutional constraint. To study this, I develop an anchored
-        embedding scaling method to measure policy displacement of unilateral
-        actions.
+          I study presidential power and policy choice under institutional
+          constraints. My research examines which policies presidents pursue
+          through unilateral action and how far those actions move policy from
+          the status quo. My dissertation develops methods to classify
+          presidential directives and measure their ideological content.
         </p>
 
         <p>
-        Substantively, I work on American political institutions, executive
-        politics, legislative politics, and political communication.
-        Methodologically, I use large-scale text analysis, large language
-        models, and other computational tools to build new measures from
-        political texts.
+          My methodological work focuses on measurement and validation in
+          computational social science. I study how evaluation design shapes
+          the choice of text classifiers and how faithfully survey digital
+          twins reproduce human response patterns.
+        </p>
+
+        <p>
+          I am affiliated with the{" "}
+          <a
+            href="https://tecd-lab.ucr.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 transition-colors hover:text-cyan-300 hover:underline focus-visible:underline"
+          >
+            Laboratory for Technology, Communication and Democracy (TeCD-Lab)
+          </a>{" "}
+          at UC Riverside, directed by Professor Kevin Esterling. I also serve
+          on the web development team for{" "}
+          <a
+            href="https://tecd-lab.ucr.edu/prytaneum"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 transition-colors hover:text-cyan-300 hover:underline focus-visible:underline"
+          >
+            Prytaneum
+          </a>
+          , a platform for deliberative public engagement.
         </p>
       </div>
 

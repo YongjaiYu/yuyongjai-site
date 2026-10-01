@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "About", href: "#about" },
   { label: "Dissertation", href: "#dissertation" },
   { label: "Research", href: "#research" },
+  { label: "Developing", href: "#developing" },
   { label: "Teaching", href: "#teaching" },
   { label: "Software", href: "#software" },
   { label: "Workbench", href: "#workbench" },
@@ -83,7 +84,8 @@ export default function Sidebar() {
         <p className="mb-6 text-base leading-relaxed text-slate-400">
           I study how presidents use unilateral action to pursue policy
           under institutional constraint, and I develop computational
-          methods to measure policy content at scale.
+          methods to measure policy content at scale. I also evaluate how
+          faithfully survey digital twins reproduce human response patterns.
         </p>
 
         {/* Research Tree */}
