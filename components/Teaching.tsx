@@ -52,15 +52,44 @@ export default function Teaching() {
     <section id="teaching" className="site_section">
       <h2 className="section_heading">Teaching</h2>
 
+      <h3 className="section_kicker mb-4">Instructor</h3>
+
+      <div className="card_grid">
+        <article className="surface_card">
+          <h4 className="font-semibold leading-snug text-slate-200">
+            Summer Quant Camp Instructor
+          </h4>
+          <p className="mt-1 text-base text-slate-400">UC Riverside</p>
+          <p className="mt-2 font-sans text-base leading-relaxed text-slate-300">
+            Instruction in foundational statistics and R for incoming
+            graduate students.
+          </p>
+        </article>
+
+        <article className="surface_card">
+          <h4 className="font-semibold leading-snug text-slate-200">
+            MacREU Instructor
+          </h4>
+          <p className="mt-1 text-base text-slate-400">UC Riverside</p>
+          <p className="mt-2 font-sans text-base leading-relaxed text-slate-300">
+            Guest lectures on data literacy, research presentations, poster
+            design, and abstract writing for the MacREU/MEMENCYS summer
+            program.
+          </p>
+        </article>
+      </div>
+
+      <h3 className="section_kicker mb-4 mt-12">Teaching Assistant</h3>
+
       <p className="content_limiter font-sans text-base text-slate-300">
-        Teaching Assistant &mdash; UC Riverside (2023 &ndash; Present)
+        UC Riverside (2023 &ndash; Present)
       </p>
 
       <div className="card_grid mt-8">
         <div className="surface_card">
-          <h3 className="section_kicker mb-4">
+          <h4 className="section_kicker mb-4">
             Graduate
-          </h3>
+          </h4>
           <ul className="grid gap-2">
             {graduateCourses.map((course) => (
               <li key={course.code} className="text-base">
@@ -72,9 +101,9 @@ export default function Teaching() {
         </div>
 
         <div className="surface_card">
-          <h3 className="section_kicker mb-4">
+          <h4 className="section_kicker mb-4">
             Undergraduate
-          </h3>
+          </h4>
           <ul className="grid gap-2">
             {undergraduateCourses.map((course) => (
               <li key={course.code} className="text-base">
